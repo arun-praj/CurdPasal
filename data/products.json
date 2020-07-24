@@ -1,0 +1,57 @@
+[
+   {
+      "name": "JUJU Dhau",
+      "description": "Best curd in town",
+      "price": "200",
+      "category": "curd",
+      "stock": "200",
+      "quantitySold": "10",
+      "size": [2.5, 5, 10],
+      "photo": "default_curd.jpg",
+      "averageRating": "9"
+   },
+   {
+      "name": "Cup Dhau",
+      "description": "Best curd in town",
+      "price": "200",
+      "category": "curd",
+      "stock": "200",
+      "quantitySold": "10",
+      "size": [2.5, 5, 10],
+      "photo": "default_curd.jpg",
+      "averageRating": "7"
+   },
+   {
+      "name": "Matka Dhau",
+      "description": "Best curd in town",
+      "price": "200",
+      "category": "curd",
+      "stock": "200",
+      "quantitySold": "10",
+      "size": [2.5, 5, 10],
+      "photo": "default_curd.jpg",
+      "averageRating": "8"
+   },
+   {
+      "name": "La bhya Dhau",
+      "description": "Best curd in town",
+      "price": "200",
+      "category": "curd",
+      "stock": "200",
+      "quantitySold": "10",
+      "size": [2.5, 5, 10],
+      "photo": "default_curd.jpg",
+      "averageRating": "7.5"
+   },
+   {
+      "name": "Batta Dhau",
+      "description": "Best curd in town",
+      "price": "200",
+      "category": "curd",
+      "stock": "200",
+      "quantitySold": "10",
+      "size": [2.5, 5, 10],
+      "photo": "default_curd.jpg",
+      "averageRating": "5"
+   }
+]

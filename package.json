@@ -1,0 +1,31 @@
+{
+   "name": "node_onlineshopping",
+   "version": "1.0.0",
+   "description": "4th sem Project using node and react",
+   "main": "index.js",
+   "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1",
+      "server": "nodemon index.js"
+   },
+   "keywords": [
+      "node",
+      "react",
+      "dairy",
+      "shopping",
+      "dairy-shopping"
+   ],
+   "author": "Arun Prajapati",
+   "license": "MIT",
+   "dependencies": {
+      "bcryptjs": "^2.4.3",
+      "colors": "^1.4.0",
+      "dotenv": "^8.2.0",
+      "express": "^4.17.1",
+      "express-list-endpoints": "^5.0.0",
+      "mongoose": "^5.9.25",
+      "volleyball": "^1.5.1"
+   },
+   "devDependencies": {
+      "nodemon": "^2.0.4"
+   }
+}
