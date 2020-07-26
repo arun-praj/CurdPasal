@@ -1,0 +1,54 @@
+.u-margin {
+   &-top {
+      &-large {
+         margin-top: 25rem;
+      }
+      &-mid {
+         margin-top: 4rem;
+      }
+
+      &-small {
+         margin-top: 1.75rem;
+      }
+      &-v-small {
+         margin-top: 0.85rem;
+      }
+      &-2 {
+         margin-top: 2rem;
+      }
+   }
+   &-left {
+      &-small {
+         margin-left: 0.75rem;
+      }
+   }
+   &-btm {
+      &-large {
+         margin-bottom: 25rem;
+      }
+   }
+   // u-margin-btm-large
+}
+a {
+   text-decoration: none;
+}
+li {
+   list-style-type: none;
+}
+
+button {
+   border: none;
+   background-color: white;
+   &:hover {
+      cursor: pointer;
+   }
+}
+input[type="button"],
+input[type="submit"] {
+   &:hover {
+      cursor: pointer;
+   }
+}
+.bold {
+   font-weight: bold;
+}

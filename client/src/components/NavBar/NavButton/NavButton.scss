@@ -1,0 +1,33 @@
+.navBar {
+   &--link:hover {
+      cursor: pointer;
+   }
+   &--button {
+      // color: #686f7a !important;
+      border-radius: 3px;
+      font-size: 15px;
+      font-weight: 700;
+      outline: none;
+      &:hover {
+         background-color: #d44949 !important;
+      }
+      &--primary {
+      }
+      &--secondary {
+         border: 1px solid #686f7a !important;
+         &:hover {
+            color: #000000 !important;
+            background-color: #ffffff !important;
+         }
+      }
+   }
+}
+.btn--primary {
+   background-color: #ec5252;
+   outline: none;
+   // border: 1px solid #ec5252;
+   color: #ffffff !important;
+   text-align: center;
+   // font-size: 16px !important;
+   font-weight: 700;
+}
