@@ -1,0 +1,35 @@
+.signup {
+   min-height: 80vh;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   &__steeper {
+      //   margin-top: -1000px;
+      width: 450px;
+      display: flex;
+      justify-content: center;
+      margin: 0px 0 80px 0;
+   }
+   .password__validation {
+      display: flex;
+      flex-wrap: wrap;
+      // flex: 1 0 30%;
+      justify-content: space-around;
+      width: 100%;
+      &__text {
+         text-align: left;
+
+         font-size: 12px;
+         white-space: nowrap;
+         display: flex;
+         justify-content: flex-start;
+         // align-items: center;
+      }
+      &__icon {
+         color: red;
+         height: 20px;
+         width: 20px;
+      }
+   }
+}
