@@ -11,7 +11,7 @@
 ## Installation
 
 ```bash
-1. npm install //installs Node packages
+1. npm install <!--//installs Node packages-->
 2. cd client
 3. npm install //install client packages
 ```
