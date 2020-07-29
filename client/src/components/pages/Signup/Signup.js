@@ -31,7 +31,6 @@ class Signup extends Component {
    };
 
    setPointsHandler = (coords) => {
-      const { points } = this.state;
       this.setState({
          points: coords,
       });
@@ -164,6 +163,7 @@ class Signup extends Component {
                         type="text"
                         name="firstName"
                         id="firstName"
+                        minLength="2"
                         value={this.state.firstName}
                         className="login__form__input"
                         placeholder="First name"
@@ -183,6 +183,7 @@ class Signup extends Component {
                         type="text"
                         name="lastName"
                         id="lastname"
+                        minLength="2"
                         value={this.state.lastName}
                         className="login__form__input"
                         placeholder="Last name"
@@ -217,7 +218,11 @@ class Signup extends Component {
                         <use xlinkHref="/icons/tabler-sprite.svg#tabler-at" />
                      </svg>
                   </div>
-                  <button type="submit" onClick={this.nextStepHandler}>
+                  <button
+                     type="submit"
+                     className="login__btn"
+                     style={{ marginTop: "0px" }}
+                     onClick={this.nextStepHandler}>
                      Continue
                   </button>
 
@@ -226,7 +231,7 @@ class Signup extends Component {
                      <div className="text">OR, Sign up with google</div>
                      <div className="line"></div>
                   </div>
-                  <div className="login__form__group" style={{ margin: "0px" }}>
+                  <div className="login__form__group">
                      <input
                         type="button"
                         className="login__form__input login__form__input--btn "
@@ -252,6 +257,7 @@ class Signup extends Component {
                         type="number"
                         name="contact"
                         id="contact"
+                        minLength="7"
                         value={this.state.contact}
                         className="login__form__input"
                         placeholder="Phone number"
@@ -271,6 +277,7 @@ class Signup extends Component {
                         type="name"
                         name="city"
                         id="city"
+                        minLength="2"
                         value={this.state.city}
                         className="login__form__input"
                         placeholder="City , Eg. Bhaktapur"
@@ -308,9 +315,28 @@ class Signup extends Component {
                   )}
 
                   <div className="signup__btn-group">
-                     <button onClick={this.prevStepHandler}>Back</button>
+                     <button
+                        style={{
+                           marginTop: "0px",
+                           width: "150px",
+                           backgroundColor: "white",
+                           color: "black",
+                           border: " 1px solid #686f7a ",
+                        }}
+                        className="login__btn"
+                        onClick={this.prevStepHandler}>
+                        Back
+                     </button>
 
-                     <button onClick={this.nextStepHandler}>Continue</button>
+                     <button
+                        style={{
+                           marginTop: "0px",
+                           width: "150px",
+                        }}
+                        className="login__btn"
+                        onClick={this.nextStepHandler}>
+                        Continue
+                     </button>
                   </div>
                </form>
             );
@@ -409,22 +435,22 @@ class Signup extends Component {
                   <div className="signup__btn-group">
                      <button
                         style={{
-                           padding: "10px 20px",
-                           backgroundColor: "red",
-                           border: "1px solid red",
+                           width: "150px",
+                           backgroundColor: "white",
+                           color: "black",
+                           border: " 1px solid #686f7a ",
                         }}
+                        className="login__btn"
                         onClick={this.prevStepHandler}>
                         Back
                      </button>
 
                      <button
-                        type="submit"
-                        onClick={this.onSubmitHandler}
                         style={{
-                           padding: "10px 20px",
-                           backgroundColor: "white",
-                           border: "1px solid black",
-                        }}>
+                           width: "150px",
+                        }}
+                        className="login__btn"
+                        onClick={this.onSubmitHandler}>
                         Submit
                      </button>
                   </div>

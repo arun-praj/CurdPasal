@@ -1,7 +1,11 @@
 import React from "react";
-import NavBar from "../../NavBar/NavBar";
-
+import Mapv2 from "../../UI/Maps/Mapv2";
 const Home = (props) => {
-   return <div>This is Home page</div>;
+   return (
+      <div>
+         This is Home page
+         <Mapv2 />
+      </div>
+   );
 };
 export default Home;

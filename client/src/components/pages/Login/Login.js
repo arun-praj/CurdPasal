@@ -6,7 +6,6 @@ import { connect } from "react-redux";
 import { setAlert } from "../../../redux/action/alert";
 
 import Wrapper from "../../HOC/Wrapper/Wrapper";
-import Alert from "../../UI/Alert/Alert";
 
 import "./Login.scss";
 class Login extends Component {
@@ -31,8 +30,6 @@ class Login extends Component {
             {/* <img className="wave" src="/imgs/wave.png" alt="bg_svg" /> */}
 
             <Wrapper>
-               <Alert />
-
                <div className="login">
                   {/* <div>
                      <img
@@ -43,12 +40,12 @@ class Login extends Component {
                   </div> */}
                   <div className="login__container">
                      <form className="login__form" onSubmit={(e) => this.onSubmitHandler(e)}>
-                        {/* <img
-                           height="24px"
+                        <img
+                           // height="24px"
                            className="login__form--img"
-                           src="/imgs/undraw_female_avatar_w3jk.svg"
+                           src="/imgs/pwease.gif"
                            alt="svg_icon"
-                        /> */}
+                        />
                         <h3>Login to your account</h3>
                         <div className="login__form__group" style={{ margin: "0px" }}>
                            <input

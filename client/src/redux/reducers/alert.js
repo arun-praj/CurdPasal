@@ -1,4 +1,4 @@
-import { SET_ALERT, REMOVE_ALERT } from "../action/types";
+import { SET_ALERT } from "../action/types";
 import { toast } from "react-toastify";
 // const initialState = [];
 const initialState = {};
