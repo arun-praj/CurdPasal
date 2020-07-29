@@ -11,9 +11,13 @@
 ## Installation
 
 ```bash
-1. npm install <!---//installs Node packages--->
+//installs Node packages
+1. npm install
+
 2. cd client
-3. npm install //install client packages
+
+//install client packages
+3. npm install 
 ```
 
 ## Run App
@@ -30,7 +34,7 @@
 >
 > First `cd` to client folder. 
 >
-> Tuns the app in development 	mode.
+> Runs the app in development 	mode.
 >
 > Open [http://localhost:3000] to view in browser.
 >
