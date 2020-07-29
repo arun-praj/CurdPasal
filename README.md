@@ -1,6 +1,6 @@
 # CurdPasal
 
-> Frontend and Backend API for CurdPasal app. Curpsal is a commercial website develpoed as project to learn react and node.
+> Frontend and Backend API for CurdPasal app. Curpasal is a commercial website develpoed as project to learn react and node.
 
 ## Usage
 
