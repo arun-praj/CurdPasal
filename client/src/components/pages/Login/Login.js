@@ -1,9 +1,9 @@
 import React, { Component, Fragment } from "react";
 import { Link, Redirect } from "react-router-dom";
-
+import { GoogleLogin } from "react-google-login";
 //REDUX
 import { connect } from "react-redux";
-import { login } from "../../../redux/action/auth";
+import { login, loginWithGoogle } from "../../../redux/action/auth";
 
 import Wrapper from "../../HOC/Wrapper/Wrapper";
 
@@ -18,6 +18,12 @@ class Login extends Component {
       // this.props.setAlert(this.state.email, "success");
       const { email, password } = this.state;
       this.props.login({ email, password });
+   };
+   googleAuthHandler = (response) => {
+      this.props.loginWithGoogle(response);
+   };
+   failHandler = (res) => {
+      console.log(res);
    };
    onChangeHandler = (e) => {
       e.preventDefault();
@@ -53,11 +59,37 @@ class Login extends Component {
                         />
                         <h3>Login to your account</h3>
                         <div className="login__form__group" style={{ margin: "0px" }}>
-                           <input
+                           <GoogleLogin
+                              clientId="796317557299-6qekcgm9mdudfudt0accng26ngpv6jic.apps.googleusercontent.com"
+                              buttonText="Login"
+                              onSuccess={this.googleAuthHandler}
+                              onFailure={this.failHandler}
+                              cookiePolicy={"single_host_origin"}
+                              render={(renderProps) => (
+                                 <button
+                                    className="login__form__input login__form__input--btn "
+                                    onClick={renderProps.onClick}
+                                    disabled={renderProps.disabled}>
+                                    Login With Google
+                                 </button>
+                              )}
+                              // isSignedIn={true}
+                           />
+                           {/* <input
                               type="button"
                               className="login__form__input login__form__input--btn "
                               value="Login With Google"
-                           />
+                              onClick={this.googleAuthHandler}
+                           /> */}
+                           {/* <a
+                              href="http://localhost:8000/auth/google"
+                              className="login__form__input login__form__input--btn "
+                              onClick={store.dispatch({
+                                 type: LOGIN_SUCCESS,
+                              })}>
+                              {" "}
+                              Login With Google
+                           </a> */}
                            <img
                               className="login__form--icon"
                               height="24px"
@@ -133,4 +165,4 @@ class Login extends Component {
 const mapStateToProps = (state) => ({
    isAuthenticated: state.auth.isAuthenticated,
 });
-export default connect(mapStateToProps, { login })(Login);
+export default connect(mapStateToProps, { login, loginWithGoogle })(Login);

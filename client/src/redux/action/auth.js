@@ -12,6 +12,35 @@ import axios from "axios";
 import { setAlert } from "./alert";
 import setAuthToken from "../utils/setAuthToken";
 
+export const loginWithGoogle = (response) => async (dispatch) => {
+   const config = {
+      headers: {
+         "Content-Type": "application/json",
+      },
+   };
+   //    console.log(state);
+   const { sW, yu, sU, PK, OU } = response.Ot;
+   const body = JSON.stringify({ sW, yu, sU, PK, OU });
+
+   console.log(response.Ot);
+   try {
+      const res = await axios.post("http://localhost:8000/api/auth/google", body, config);
+      dispatch({
+         type: LOGIN_SUCCESS,
+         payload: res.data,
+      });
+   } catch (e) {
+      if (e.response.data.error) {
+         dispatch(setAlert(e.response.data.error, "error"));
+      } else {
+         dispatch(setAlert("SERVER ERROR", "error"));
+      }
+      dispatch({
+         type: LOGIN_FAILED,
+      });
+   }
+};
+
 export const login = ({ email, password }) => async (dispatch) => {
    const config = {
       headers: {
@@ -28,9 +57,11 @@ export const login = ({ email, password }) => async (dispatch) => {
          payload: res.data,
       });
    } catch (e) {
-      const err = e.response.data.error;
-      //   console.log(err);
-      dispatch(setAlert(err, "error"));
+      if (e.response.data.error) {
+         dispatch(setAlert(e.response.data.error, "error"));
+      } else {
+         dispatch(setAlert("SERVER ERROR", "error"));
+      }
       dispatch({
          type: LOGIN_FAILED,
       });
@@ -68,11 +99,7 @@ export const loadUser = () => async (dispatch) => {
          setAuthToken(localStorage.getItem("token"));
       }
 
-      console.log(localStorage.getItem("token"));
-      // if (Cookies.get("token")) {
-
-      // }
-      // console.log(Cookies.get("token"));
+      // console.log(localStorage.getItem("token"));
       const res = await axios.get("http://localhost:8000/api/auth/me");
       console.log("res", res);
       dispatch({

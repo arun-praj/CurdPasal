@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
-const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const bcrypt = require("bcryptjs");
+
 const UserSchema = new mongoose.Schema({
    firstName: {
       type: String,
@@ -12,9 +13,18 @@ const UserSchema = new mongoose.Schema({
    },
    email: {
       type: String,
+
       required: [true, "Email is required"],
       unique: true,
       match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, "Please add a valid email"],
+   },
+   verified: {
+      type: Boolean,
+      default: false,
+   },
+   googleId: {
+      type: String,
+      unique: true,
    },
    role: {
       type: String,
@@ -23,13 +33,13 @@ const UserSchema = new mongoose.Schema({
    },
    password: {
       type: String,
-      required: [true, "Please add a Password"],
+      // required: [true, "Please add a Password"],
       minlength: 6,
       select: false, // When we get a user its not gonna return password
    },
    city: {
       type: String,
-      required: [true, "Please add an address"],
+      // required: [true, "Please add an address"],
    },
    points: {
       type: [Number],
@@ -37,8 +47,9 @@ const UserSchema = new mongoose.Schema({
    contact: {
       type: Number,
       minlength: 10,
-      required: true,
+      // required: true,
    },
+
    photo: {
       type: String,
       default: "user-photo.jpg",
@@ -57,10 +68,10 @@ const UserSchema = new mongoose.Schema({
    },
 });
 
-UserSchema.pre("save", async function (next) {
-   const salt = await bcrypt.genSalt(10);
-   this.password = await bcrypt.hash(this.password, salt);
-});
+// UserSchema.pre("save", async function (next) {
+//    const salt = await bcrypt.genSalt(10);
+//    this.password = await bcrypt.hash(this.password, salt);
+// });
 
 //Sign jwt and return token
 UserSchema.methods.getSignedJwt = function () {

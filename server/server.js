@@ -4,6 +4,7 @@ const colors = require("colors");
 const listEndpoints = require("express-list-endpoints");
 const volleyball = require("volleyball");
 const cookieParser = require("cookie-parser");
+const cookieSession = require("cookie-session");
 const cors = require("cors");
 
 const connect = require("./config/DBConnect");
@@ -16,20 +17,32 @@ const app = express();
 dotenv.config({
    path: "./config/config.env",
 });
+
 connect();
 
 //MIDDLEWARES
 // @DESC         Body-parser
+app.all("/*", function (req, res, next) {
+   res.header("Access-Control-Allow-Origin", "*");
+   next();
+});
 app.use(express.json());
 app.use(volleyball);
 app.use(cookieParser());
 app.use(cors());
+// app.options("*", cors());
+app.use(
+   cookieSession({
+      // milliseconds of a day
+      name: "google",
+      maxAge: 24 * 60 * 60 * 1000,
+      keys: [process.env.COOKIE_KEY],
+   })
+);
+
 //Routes
-
 app.use("/api/products", require("./routes/products"));
-
 app.use("/api/auth/", require("./routes/auth"));
-
 app.use("/", (req, res, next) => {
    log(req);
    res.json({
@@ -49,5 +62,5 @@ app.listen(PORT, () => log(`Server started at port : ${PORT}`, "success"));
 //HANDLE unhandled Promise Rejection
 process.on("unhandledRejection", (reason, promise) => {
    console.log(`Error : ${reason.message}`.red.bold);
-   server.close(() => process.exit(1));
+   // server.close(() => process.exit(1));
 });

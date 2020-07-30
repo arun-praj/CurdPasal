@@ -1,8 +1,9 @@
 import React, { Component, Fragment } from "react";
-
+import { GoogleLogout } from "react-google-login";
 //redux
 import { connect } from "react-redux";
 import { logout } from "../../redux/action/auth";
+import store from "../../redux/store";
 
 import Logo from "./Logo/Logo";
 import ToggleButton from "./ToggleButton/ToggleButton";
@@ -14,6 +15,7 @@ import "./NavBar.scss";
 import "./ToggleButton/ToggleButton";
 
 import sprite from "../../img/icon/sprite.svg";
+import { setAlert } from "../../redux/action/alert";
 class NavBar extends Component {
    state = {
       showSearchBar: false,
@@ -64,7 +66,13 @@ class NavBar extends Component {
          );
       }
       const dropdown = <div>This is dropdown</div>;
-
+      // const authLink = (
+      //    <GoogleLogout
+      //       clientId="796317557299-6qekcgm9mdudfudt0accng26ngpv6jic.apps.googleusercontent.com"
+      //       buttonText="Logout"
+      //       onLogoutSuccess={this.props.logout}
+      //       onFailure={store.dispatch(setAlert("Logout failed", "error"))}></GoogleLogout>
+      // );
       const authLink = <button onClick={this.props.logout}>Logout</button>;
       const guestLink = (
          <Fragment>

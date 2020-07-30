@@ -38,9 +38,6 @@ class Mapv2 extends Component {
                   {StoreDate.features.map((el) => (
                      <Feature id={el.properties.STORE_ID} coordinates={el.geometry.coordinates} />
                   ))}
-                  {/* <Feature coordinates={[85.35948296024799, 27.69209332037316]} />
-                  <Feature coordinates={[85.44021465132647, 27.67536081275729]} />
-                  <Feature coordinates={[85.3290354570716, 27.67111722494333]} /> */}
                </Layer>
             </Map>
          </Fragment>

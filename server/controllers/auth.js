@@ -1,4 +1,6 @@
 const mongoose = require("mongoose");
+const bcrypt = require("bcryptjs");
+
 const User = require("../models/User");
 const ErrorResponse = require("../utils/errorResponse");
 const asyncHandler = require("../middleware/async");
@@ -23,10 +25,39 @@ const sendTokenResponse = (user, statusCode, res) => {
 };
 
 //@description      Register new User
+//@Routes           GET /api/auth/google
+//@access           public
+exports.loginWithGoogle = asyncHandler(async (req, res, next) => {
+   const { sW, yu, sU, PK, OU } = req.body;
+   const user = await User.findOne({
+      email: yu,
+   });
+   if (user) {
+      sendTokenResponse(user, 200, res);
+   } else {
+      const newUser = await User.create({
+         googleId: OU,
+         firstName: sW,
+         lastName: sU,
+         email: yu,
+         photo: PK,
+      });
+      sendTokenResponse(newUser, 200, res);
+   }
+});
+
+//@description      Register new User
 //@Routes           GET /api/auth/register
 //@access           public
 exports.register = asyncHandler(async (req, res, next) => {
    // const { name, email, password, address, contact } = req.body;
+
+   //encrypt the password
+   const password = req.body.password;
+   const salt = await bcrypt.genSalt(10);
+   req.body.password = await bcrypt.hash(password, salt);
+
+   //Create user
    const user = await User.create(req.body);
 
    sendTokenResponse(user, 200, res);
@@ -41,9 +72,14 @@ exports.login = asyncHandler(async (req, res, next) => {
       return next(new ErrorResponse("Please complete above form", 401));
    }
    const user = await User.findOne({ email }).select("+password");
-
+   console.log(user);
+   if (user.email && !user.password) {
+      return next(
+         new ErrorResponse("User account is associated with google. Please login with google", 401)
+      );
+   }
    if (!user) {
-      return next(new ErrorResponse("User not found", 401));
+      return next(new ErrorResponse("Invalid Email or password", 401));
    }
    const isMatched = await user.matchPassword(password);
 
