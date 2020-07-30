@@ -11,17 +11,17 @@
 ## Installation
 
 
-//installs Node packages
+<!--installs Node packages-->
 ```bash
 1. cd server
 
 2. npm install
 
-3.cd ..
+3. cd ..
 
 4. cd client
 ```
-//install client packages
+<!--install client packages-->
 ```bash
 5. npm install 
 ```
