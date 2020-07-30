@@ -4,20 +4,26 @@
 
 ## Usage
 
-> 1. Rename "./config/config.env.copy" to "config/config.env" 
+> 1. Rename "./server/config/config.env.copy" to "config/config.env" 
 > 2.  And rename "./client/src/config/config.env.copy" to "./client/src/config/config.env"
 > 3. Update the values to your own. 
 
 ## Installation
 
+
+<!--installs Node packages-->
 ```bash
-//installs Node packages
-1. npm install
+1. cd server
 
-2. cd client
+2. npm install
 
-//install client packages
-3. npm install 
+3. cd ..
+
+4. cd client
+```
+<!--install client packages-->
+```bash
+5. npm install 
 ```
 
 ## Run App
