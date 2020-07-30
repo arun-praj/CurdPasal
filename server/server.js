@@ -4,6 +4,7 @@ const colors = require("colors");
 const listEndpoints = require("express-list-endpoints");
 const volleyball = require("volleyball");
 const cookieParser = require("cookie-parser");
+const cors = require("cors");
 
 const connect = require("./config/DBConnect");
 const log = require("./utils/logHandler");
@@ -22,6 +23,7 @@ connect();
 app.use(express.json());
 app.use(volleyball);
 app.use(cookieParser());
+app.use(cors());
 //Routes
 
 app.use("/api/products", require("./routes/products"));

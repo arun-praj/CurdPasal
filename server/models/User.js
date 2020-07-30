@@ -2,7 +2,11 @@ const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const UserSchema = new mongoose.Schema({
-   name: {
+   firstName: {
+      type: String,
+      required: [true, "Name is Required"],
+   },
+   lastName: {
       type: String,
       required: [true, "Name is Required"],
    },
@@ -23,9 +27,12 @@ const UserSchema = new mongoose.Schema({
       minlength: 6,
       select: false, // When we get a user its not gonna return password
    },
-   address: {
+   city: {
       type: String,
       required: [true, "Please add an address"],
+   },
+   points: {
+      type: [Number],
    },
    contact: {
       type: Number,

@@ -40,6 +40,7 @@ class MapWithIcons extends React.Component {
       const style = "mapbox://styles/mapbox/streets-v9";
       return (
          <Map
+            // eslint-disable-next-line
             style={style}
             zoom={zoom}
             center={center}

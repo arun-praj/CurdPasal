@@ -22,21 +22,28 @@ const sendTokenResponse = (user, statusCode, res) => {
    });
 };
 
+//@description      Register new User
+//@Routes           GET /api/auth/register
+//@access           public
 exports.register = asyncHandler(async (req, res, next) => {
-   const { name, email, password, address, contact } = req.body;
-   const user = await User.create({ name, email, password, address, contact });
+   // const { name, email, password, address, contact } = req.body;
+   const user = await User.create(req.body);
 
    sendTokenResponse(user, 200, res);
 });
 
+//@description      User login
+//@Routes           GET /api/auth/login
+//@access           public
 exports.login = asyncHandler(async (req, res, next) => {
    const { email, password } = req.body;
    if (!email || !password) {
       return next(new ErrorResponse("Please complete above form", 401));
    }
    const user = await User.findOne({ email }).select("+password");
+
    if (!user) {
-      return next(new ErrorResponse("Please complete above form", 401));
+      return next(new ErrorResponse("User not found", 401));
    }
    const isMatched = await user.matchPassword(password);
 
@@ -44,4 +51,15 @@ exports.login = asyncHandler(async (req, res, next) => {
       return next(new ErrorResponse("Invalid Email or password", 401));
    }
    sendTokenResponse(user, 200, res);
+});
+
+//@description      Get current logged in user
+//@Routes           GET /api/auth/me
+//@access           private
+exports.getMe = asyncHandler(async (req, res, next) => {
+   const user = await User.findById(req.user.id);
+   res.status(200).json({
+      success: true,
+      data: user,
+   });
 });

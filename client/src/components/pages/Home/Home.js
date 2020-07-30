@@ -1,11 +1,15 @@
-import React from "react";
+import React, { Fragment } from "react";
 import Mapv2 from "../../UI/Maps/Mapv2";
+
+import Wrapper from "../../HOC/Wrapper/Wrapper";
 const Home = (props) => {
    return (
-      <div>
-         This is Home page
+      <Fragment>
+         <Wrapper>
+            <div style={{ minHeight: "80vh" }}></div>
+         </Wrapper>
          <Mapv2 />
-      </div>
+      </Fragment>
    );
 };
 export default Home;

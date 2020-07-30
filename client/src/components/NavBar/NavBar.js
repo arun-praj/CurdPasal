@@ -1,13 +1,15 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
+
+//redux
+import { connect } from "react-redux";
+import { logout } from "../../redux/action/auth";
+
 import Logo from "./Logo/Logo";
 import ToggleButton from "./ToggleButton/ToggleButton";
 import SearchBar from "./SearchBar/Searchbar";
 import SearchButton from "./SearchButton/SearchButton";
 import NavItem from "./NavItems/NavItem";
 import NavButton from "./NavButton/NavButton";
-
-// import LoginModal from "../modals/LoginModal/LoginModal";
-// import SignupModal from "../modals/SignupModal/SignupModal";
 import "./NavBar.scss";
 import "./ToggleButton/ToggleButton";
 
@@ -63,10 +65,13 @@ class NavBar extends Component {
       }
       const dropdown = <div>This is dropdown</div>;
 
-      // if (this.state.showSearchBar) {
-      //    backdrop = <Backdrop drawerToggle={this.backdropClickHandler} />;
-      // }
-
+      const authLink = <button onClick={this.props.logout}>Logout</button>;
+      const guestLink = (
+         <Fragment>
+            <NavButton data="Sign&nbsp;Up" btnType="btn--primary" to="/signup" />
+            <NavButton data="Log&nbsp;In" btnType="navBar--button--secondary" to="/login" />
+         </Fragment>
+      );
       return (
          <header className="header">
             <nav className="navBar">
@@ -88,13 +93,13 @@ class NavBar extends Component {
                         onclick={(e) => this.dropdownClickHandler}>
                         {this.state.dropdownOpen && dropdown}
                      </NavItem>
-
-                     <NavButton data="Sign&nbsp;Up" btnType="btn--primary" to="/signup" />
-                     <NavButton
-                        data="Log&nbsp;In"
-                        btnType="navBar--button--secondary"
-                        to="/login"
-                     />
+                     {this.props.isLoading ? (
+                        <h1>Loading</h1>
+                     ) : this.props.isAuthenticated ? (
+                        authLink
+                     ) : (
+                        guestLink
+                     )}
                   </ul>
                </div>
             </nav>
@@ -102,5 +107,8 @@ class NavBar extends Component {
       );
    }
 }
-
-export default NavBar;
+const mapStateToProps = (state) => ({
+   isAuthenticated: state.auth.isAuthenticated,
+   isLoading: state.auth.isLoading,
+});
+export default connect(mapStateToProps, { logout })(NavBar);

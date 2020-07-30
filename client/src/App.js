@@ -1,9 +1,9 @@
 import React, { Component, Fragment } from "react";
 import { Switch, Route } from "react-router-dom";
-
 //REDUX
 import { Provider } from "react-redux";
 import store from "./redux/store";
+import { loadUser } from "./redux/action/auth";
 
 import NavBar from "./components/NavBar/NavBar";
 import Backdrop from "./components/UI/Backdrop/Backdrop";
@@ -20,6 +20,9 @@ class App extends Component {
       isLoginModalOpen: false,
       isSignupModalOpen: false,
    };
+   componentWillMount() {
+      store.dispatch(loadUser());
+   }
    drawerToggleClickHandler = () => {
       this.setState((prevState) => {
          return { isSideDrawerOpen: !prevState.isSideDrawerOpen };

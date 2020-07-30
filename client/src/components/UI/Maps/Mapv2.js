@@ -22,6 +22,7 @@ class Mapv2 extends Component {
             <Map
                zoom={zoom}
                center={center}
+               // eslint-disable-next-line
                style="mapbox://styles/mapbox/streets-v9"
                layout={{ "icon-image": "myImage", "icon-allow-overlap": true }}
                images={images}

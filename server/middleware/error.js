@@ -20,7 +20,7 @@ const errorHandler = (err, req, res, next) => {
 
    //Mongoose Duplicate Key
    if (err.code === 11000) {
-      const message = "[Error] Duplicate Key Error";
+      const message = "Email already Exist. Please Login";
       error = new ErrorResponse(message, 400);
    }
 

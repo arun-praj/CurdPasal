@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import Stepper from "react-stepper-horizontal";
-
+import { Redirect } from "react-router-dom";
 //REDUX
 import { connect } from "react-redux";
 import { setAlert } from "../../../redux/action/alert";
+import { register } from "../../../redux/action/auth";
 
 import MapWithIcons from "../../UI/Maps/Mapv1";
 import "../Login/Login.scss";
@@ -13,6 +14,7 @@ class Signup extends Component {
    state = {
       activeStep: 0,
       firstName: "",
+      lastName: "",
       email: "",
       password: "",
       passwordRepeat: "",
@@ -74,17 +76,7 @@ class Signup extends Component {
       });
    };
    nextStepHandler = (e) => {
-      const {
-         activeStep,
-         firstName,
-         lastName,
-         email,
-
-         contact,
-         city,
-         points,
-         showMap,
-      } = this.state;
+      const { activeStep, firstName, lastName, email, contact, city, points, showMap } = this.state;
       e.preventDefault();
       if ((!firstName || !lastName || !email) && activeStep === 0) {
          return this.props.setAlert("All input fields must be filled.", "error");
@@ -133,7 +125,8 @@ class Signup extends Component {
       if (!capital || !number || !small || !eightCharacters) {
          return this.props.setAlert("😁 Invalid Password.", "error");
       }
-      this.props.setAlert("😁", "success");
+      this.props.register(this.state);
+      // this.props.setAlert("😁", "success");
    };
    handlerCheckbox = (e) => {
       // const { showMap } = this.state;
@@ -153,7 +146,9 @@ class Signup extends Component {
          color: "#cccccc",
          transition: "0.4s ease all",
       };
-
+      if (this.props.isAuthenticated) {
+         return <Redirect to="/" />;
+      }
       switch (this.state.activeStep) {
          case 0:
             formGroup = (
@@ -481,4 +476,7 @@ class Signup extends Component {
       );
    }
 }
-export default connect(null, { setAlert })(Signup);
+const mapStateToProps = (state) => ({
+   isAuthenticated: state.auth.isAuthenticated,
+});
+export default connect(mapStateToProps, { setAlert, register })(Signup);

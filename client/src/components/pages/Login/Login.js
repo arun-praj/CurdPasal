@@ -1,9 +1,9 @@
 import React, { Component, Fragment } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 
 //REDUX
 import { connect } from "react-redux";
-import { setAlert } from "../../../redux/action/alert";
+import { login } from "../../../redux/action/auth";
 
 import Wrapper from "../../HOC/Wrapper/Wrapper";
 
@@ -15,7 +15,9 @@ class Login extends Component {
    };
    onSubmitHandler = (e) => {
       e.preventDefault();
-      this.props.setAlert(this.state.email, "success");
+      // this.props.setAlert(this.state.email, "success");
+      const { email, password } = this.state;
+      this.props.login({ email, password });
    };
    onChangeHandler = (e) => {
       e.preventDefault();
@@ -24,6 +26,9 @@ class Login extends Component {
       });
    };
    render() {
+      if (this.props.isAuthenticated) {
+         return <Redirect to="/" />;
+      }
       return (
          <Fragment>
             {/* <img className="bg__img" src="/imgs/Scattered-Forcefields.svg" alt="bg_svg" /> */}
@@ -125,4 +130,7 @@ class Login extends Component {
       );
    }
 }
-export default connect(null, { setAlert })(Login);
+const mapStateToProps = (state) => ({
+   isAuthenticated: state.auth.isAuthenticated,
+});
+export default connect(mapStateToProps, { login })(Login);
