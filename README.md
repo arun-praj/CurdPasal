@@ -2,6 +2,9 @@
 
 > Frontend and Backend API for CurdPasal app. Curpasal is a commercial website developed as project to learn react and node.
 
+## Demo
+[https://dhaushop.herokuapp.com/]
+
 ## Usage
 
 > 1. Rename "./server/config/config.env.copy" to "config/config.env" 
