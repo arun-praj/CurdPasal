@@ -1,11 +1,7 @@
 node_modules/
 config/config.env
 
-# testing
-/coverage
 
-# production
-/build
 
 # misc
 vscode
