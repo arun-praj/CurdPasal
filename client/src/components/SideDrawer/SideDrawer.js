@@ -1,4 +1,8 @@
 import React from "react";
+
+import { connect } from "react-redux";
+import { logout } from "../../redux/action/auth";
+
 import "./SideDrawer.scss";
 import sprite from "../../img/icon/sprite.svg";
 import NavButton from "../NavBar/NavButton/NavButton";
@@ -7,20 +11,18 @@ const SideDrawer = (props) => {
    if (props.isOpen) {
       drawerClasses.push("open");
    }
+   const authLink = <button onClick={props.logout}>Logout</button>;
+   const guestLink = (
+      <>
+         <NavButton data="Sign&nbsp;Up" btnType="btn--primary" to="/signup" />
+         <NavButton data="Log&nbsp;In" btnType="navBar--button--secondary" to="/login" />
+      </>
+   );
    return (
       <nav className={drawerClasses.join(" ")}>
          <div className="sideDrawer__wrapper">
             <div className="sideDrawer__btns">
-               <NavButton
-                  data="Sign&nbsp;Up"
-                  btnType="navBar--button--primary"
-                  click={props.onLoginBtnClick}
-               />
-               <NavButton
-                  data="Sign&nbsp;Up"
-                  btnType="navBar--button--secondary"
-                  click={props.onLoginBtnClick}
-               />
+               {props.isLoading ? <h1>Loading</h1> : props.isAuthenticated ? authLink : guestLink}
             </div>
             <ul className="sideDrawer__list">
                <li className="sideDrawer__list--item ">
@@ -49,11 +51,13 @@ const SideDrawer = (props) => {
                </li>
             </ul>
          </div>
-         <div className="legal-info">
-            &copy;2020 by Arun Prajapati. All right reserved.
-         </div>
+         <div className="legal-info">&copy;2020 by Arun Prajapati. All right reserved.</div>
       </nav>
    );
 };
 
-export default SideDrawer;
+const mapStateToProps = (state) => ({
+   isAuthenticated: state.auth.isAuthenticated,
+   isLoading: state.auth.isLoading,
+});
+export default connect(mapStateToProps, { logout })(SideDrawer);

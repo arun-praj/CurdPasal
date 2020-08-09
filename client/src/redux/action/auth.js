@@ -18,11 +18,8 @@ export const loginWithGoogle = (response) => async (dispatch) => {
          "Content-Type": "application/json",
       },
    };
-   //    console.log(state);
    const { sW, yu, sU, PK, OU } = response.Ot;
    const body = JSON.stringify({ sW, yu, sU, PK, OU });
-
-   console.log(response.Ot);
    try {
       const res = await axios.post("http://localhost:8000/api/auth/google", body, config);
       dispatch({
@@ -30,7 +27,7 @@ export const loginWithGoogle = (response) => async (dispatch) => {
          payload: res.data,
       });
    } catch (e) {
-      if (e.response.data.error) {
+      if (e.response) {
          dispatch(setAlert(e.response.data.error, "error"));
       } else {
          dispatch(setAlert("SERVER ERROR", "error"));
@@ -51,12 +48,13 @@ export const login = ({ email, password }) => async (dispatch) => {
    const body = JSON.stringify({ email, password });
    //    console.log(body);
    try {
-      const res = await axios.post("http://localhost:8000/api/auth/login", body, config);
+      const res = await axios.post("/api/auth/login", body, config);
       dispatch({
          type: LOGIN_SUCCESS,
          payload: res.data,
       });
    } catch (e) {
+      // dispatch(setAlert("SERVER ERROR", "error"));
       if (e.response.data.error) {
          dispatch(setAlert(e.response.data.error, "error"));
       } else {
@@ -75,18 +73,27 @@ export const register = (state) => async (dispatch) => {
       },
    };
    //    console.log(state);
-   const body = JSON.stringify(state);
-   //    console.log(body);
+   const { firstName, lastName, email, password, city, points, contact, photo } = state;
+   const body = JSON.stringify({
+      firstName,
+      lastName,
+      email,
+      password,
+      city,
+      points,
+      contact,
+      photo,
+   });
+   console.log(body);
    try {
-      const res = await axios.post("http://localhost:8000/api/auth/register", body, config);
+      const res = await axios.post("/api/auth/register", body, config);
       dispatch({
          type: REGISTER_SUCCESS,
          payload: res.data,
       });
    } catch (e) {
-      const err = e.response.data.error;
-      //   console.log(err);
-      dispatch(setAlert(err, "error"));
+      // console.log(err);
+      dispatch(setAlert(e, "error"));
       dispatch({
          type: REGISTER_FAILED,
       });
@@ -100,7 +107,7 @@ export const loadUser = () => async (dispatch) => {
       }
 
       // console.log(localStorage.getItem("token"));
-      const res = await axios.get("http://localhost:8000/api/auth/me");
+      const res = await axios.get("/api/auth/me");
       console.log("res", res);
       dispatch({
          type: USER_LOADED,

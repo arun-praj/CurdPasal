@@ -62,5 +62,5 @@ app.listen(PORT, () => log(`Server started at port : ${PORT}`, "success"));
 //HANDLE unhandled Promise Rejection
 process.on("unhandledRejection", (reason, promise) => {
    console.log(`Error : ${reason.message}`.red.bold);
-   // server.close(() => process.exit(1));
+   server.close(() => process.exit(1));
 });

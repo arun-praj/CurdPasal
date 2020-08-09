@@ -1,9 +1,7 @@
 import React, { Component, Fragment } from "react";
-import { GoogleLogout } from "react-google-login";
 //redux
 import { connect } from "react-redux";
 import { logout } from "../../redux/action/auth";
-import store from "../../redux/store";
 
 import Logo from "./Logo/Logo";
 import ToggleButton from "./ToggleButton/ToggleButton";
@@ -15,7 +13,6 @@ import "./NavBar.scss";
 import "./ToggleButton/ToggleButton";
 
 import sprite from "../../img/icon/sprite.svg";
-import { setAlert } from "../../redux/action/alert";
 class NavBar extends Component {
    state = {
       showSearchBar: false,

@@ -1,4 +1,3 @@
-import dotenv from "dotenv";
 import ReactMapboxGl from "react-mapbox-gl";
 
 export const MapBoxToken = ReactMapboxGl({

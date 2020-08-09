@@ -14,6 +14,8 @@ import Signup from "./components/pages/Signup/Signup";
 import Error from "./components/pages/Error/Error";
 import Footer from "./components/Footer/Footer";
 
+import "./utilities.scss";
+
 class App extends Component {
    state = {
       isSideDrawerOpen: false,

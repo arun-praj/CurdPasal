@@ -1,0 +1,10 @@
+.Wrapper {
+   max-width: 1200px;
+   margin: auto;
+}
+@media screen and (max-width: 1270px) {
+   .Wrapper,
+   .navBar {
+      padding: 0 32px;
+   }
+}

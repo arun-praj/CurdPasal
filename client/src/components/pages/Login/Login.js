@@ -51,12 +51,12 @@ class Login extends Component {
                   </div> */}
                   <div className="login__container">
                      <form className="login__form" onSubmit={(e) => this.onSubmitHandler(e)}>
-                        <img
+                        {/* <img
                            // height="24px"
                            className="login__form--img"
                            src="/imgs/pwease.gif"
                            alt="svg_icon"
-                        />
+                        /> */}
                         <h3>Login to your account</h3>
                         <div className="login__form__group" style={{ margin: "0px" }}>
                            <GoogleLogin

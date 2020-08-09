@@ -41,6 +41,7 @@ exports.loginWithGoogle = asyncHandler(async (req, res, next) => {
          lastName: sU,
          email: yu,
          photo: PK,
+         verified: true,
       });
       sendTokenResponse(newUser, 200, res);
    }
@@ -50,14 +51,13 @@ exports.loginWithGoogle = asyncHandler(async (req, res, next) => {
 //@Routes           GET /api/auth/register
 //@access           public
 exports.register = asyncHandler(async (req, res, next) => {
-   // const { name, email, password, address, contact } = req.body;
+   // const { name, email, password, address, contact, points } = req.body;
 
    //encrypt the password
    const password = req.body.password;
    const salt = await bcrypt.genSalt(10);
    req.body.password = await bcrypt.hash(password, salt);
-
-   //Create user
+   req.body.googleId = `No googleId ${req.body.email}`;
    const user = await User.create(req.body);
 
    sendTokenResponse(user, 200, res);
@@ -69,7 +69,7 @@ exports.register = asyncHandler(async (req, res, next) => {
 exports.login = asyncHandler(async (req, res, next) => {
    const { email, password } = req.body;
    if (!email || !password) {
-      return next(new ErrorResponse("Please complete above form", 401));
+      return next(new ErrorResponse("lease complete above form", 401));
    }
    const user = await User.findOne({ email }).select("+password");
    console.log(user);

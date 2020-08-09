@@ -7,6 +7,7 @@ const ErrorResponse = require("../utils/errorResponse");
    200 - OK
    201 - Success
 */
+
 const errorHandler = (err, req, res, next) => {
    let error = { ...err };
    error.message = err.message;

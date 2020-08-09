@@ -52,3 +52,63 @@ input[type="submit"] {
 .bold {
    font-weight: bold;
 }
+
+.heading {
+   display: block;
+   &__primary {
+      display: block;
+      color: var(--font-color-primary);
+      // text-align: center;
+      line-height: 1.2;
+      &--main {
+         font-weight: 500;
+         color: inherit;
+         font-size: 37.5px;
+      }
+
+      &--sub {
+         // text-align: center;
+         font-weight: 500;
+         color: inherit;
+         font-size: 24px;
+      }
+   }
+   &__secondary {
+      display: block;
+      height: 10%;
+      font-weight: 900;
+
+      &--main {
+         font-size: 17px;
+         font-weight: 900;
+         display: flex;
+         // justify-content: stretch;
+         align-items: center;
+      }
+
+      &--sub {
+         display: block;
+         font-size: 15px;
+         font-weight: 400;
+         color: var(--font-color-secondary-sub);
+      }
+
+      &--sub-sub {
+         display: block;
+         font-size: 19px;
+         letter-spacing: 1.7;
+         font-weight: 400;
+         color: var(--font-color-secondary-sub-sub);
+      }
+   }
+   &_main {
+      font-size: 24px;
+      color: #29303b;
+      font-weight: 600;
+   }
+   &_sub {
+      font-size: 17px;
+      font-weight: 400;
+      color: #505763;
+   }
+}
