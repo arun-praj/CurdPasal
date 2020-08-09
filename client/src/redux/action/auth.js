@@ -105,9 +105,13 @@ export const loadUser = () => async (dispatch) => {
       if (localStorage.getItem("token")) {
          setAuthToken(localStorage.getItem("token"));
       }
-
+      const config = {
+         headers: {
+            "Content-Type": "application/json",
+         },
+      };
       // console.log(localStorage.getItem("token"));
-      const res = await axios.get("/api/auth/me");
+      const res = await axios.get("/api/auth/me", config);
       console.log("res", res);
       if (res.data) {
          dispatch({
