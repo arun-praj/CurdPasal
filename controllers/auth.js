@@ -99,5 +99,7 @@ exports.getMe = asyncHandler(async (req, res, next) => {
          success: true,
          data: user,
       });
+   } else {
+      res.status(404);
    }
 });
