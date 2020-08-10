@@ -2,6 +2,7 @@
    --primary-color: #ec5252;
    --font-color: #505763;
    --font-color-dark: #29303b;
+   --font-color-light: #d1d3dc;
    --link-color: #009688;
    --link-color-dark: #007791;
    --card-border: solid 1px #dcdacb;
@@ -28,6 +29,11 @@ body,
    //    "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
    -webkit-font-smoothing: antialiased;
    -moz-osx-font-smoothing: grayscale;
+}
+@media screen and (max-width: 480px) {
+   body {
+      width: 100vw;
+   }
 }
 
 .icon--star {

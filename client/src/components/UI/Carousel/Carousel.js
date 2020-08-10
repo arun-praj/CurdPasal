@@ -1,24 +1,21 @@
-import React, { Component } from "react";
-import Slider from "react-slick";
-
+import React from "react";
+import AliceCarousel from "react-alice-carousel";
+import "react-alice-carousel/lib/alice-carousel.css";
 import "./Header.scss";
 
-// import "~slick-carousel/slick/slick.css";
-// import "~slick-carousel/slick/slick-theme.css";
-
-export default class SimpleSlider extends Component {
-   render() {
-      const settings = {
-         dots: false,
-         infinite: true,
-         speed: 500,
-         slidesToShow: 1,
-         slidesToScroll: 1,
-         autoplay: true,
-         autoplaySpeed: 20000,
-      };
-      return (
-         <Slider {...settings}>
+const Carousel = () => {
+   const handleOnDragStart = (e) => e.preventDefault();
+   const settings = {
+      dotsDisabled: true,
+      buttonsDisabled: true,
+      infinite: true,
+      autoPlay: true,
+      autoPlayInterval: 10000,
+      stopAutoPlayOnHover: true,
+   };
+   return (
+      <div>
+         <AliceCarousel mouseTrackingEnabled dotsDisabled {...settings}>
             <div className="carousel carousel-1">
                <div className="board board-1">
                   <h1 className="heading__primary--main">We serve you best dairy in town.</h1>
@@ -57,7 +54,9 @@ export default class SimpleSlider extends Component {
                   </form>
                </div>
             </div>
-         </Slider>
-      );
-   }
-}
+         </AliceCarousel>
+      </div>
+   );
+};
+
+export default Carousel;
