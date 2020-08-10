@@ -7,7 +7,6 @@ const cookieParser = require("cookie-parser");
 const cookieSession = require("cookie-session");
 const cors = require("cors");
 const path = require("path");
-const httpProxy = require("http-proxy");
 
 const connect = require("./config/DBConnect");
 const log = require("./utils/logHandler");
@@ -28,13 +27,6 @@ if (process.env.NODE_ENV === "production") {
       res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
    });
 }
-
-httpProxy.createProxyServer({
-   target: "https://dhaushop.herokuapp.com",
-   toProxy: true,
-   changeOrigin: true,
-   xfwd: true,
-});
 
 //MIDDLEWARES
 // @DESC         Body-parser

@@ -112,8 +112,8 @@ export const loadUser = () => async (dispatch) => {
       };
       // console.log(localStorage.getItem("token"));
       const res = await axios.get("/api/auth/me", config);
-      console.log("res", res);
-      if (res.data) {
+      console.log("res", res.data.data);
+      if (res.data.data) {
          dispatch({
             type: USER_LOADED,
             payload: res.data,
