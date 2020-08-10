@@ -29,6 +29,9 @@ class App extends Component {
    componentWillMount() {
       store.dispatch(loadUser());
    }
+   componentDidUpdate() {
+      store.dispatch(loadUser());
+   }
    drawerToggleClickHandler = () => {
       this.setState((prevState) => {
          return { isSideDrawerOpen: !prevState.isSideDrawerOpen };
