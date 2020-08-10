@@ -10,13 +10,14 @@ const Carousel = () => {
       buttonsDisabled: true,
       infinite: true,
       autoPlay: true,
-      autoPlayInterval: 10000,
+      autoPlayInterval: 5000,
       stopAutoPlayOnHover: true,
+      swipeDisabled: true,
    };
    return (
-      <div>
+      <div style={{ maxWidth: "1200px", margin: "auto" }}>
          <AliceCarousel mouseTrackingEnabled dotsDisabled {...settings}>
-            <div className="carousel carousel-1">
+            <div className="carousel carousel-1" onDragStart={handleOnDragStart}>
                <div className="board board-1">
                   <h1 className="heading__primary--main">We serve you best dairy in town.</h1>
                   <h3 className="heading__secondary--sub u-margin-top-small">
@@ -38,7 +39,7 @@ const Carousel = () => {
                </div>
             </div>
 
-            <div className="carousel carousel-2">
+            <div className="carousel carousel-2" onDragStart={handleOnDragStart}>
                <div className="board board-2">
                   <h1 className="heading__primary--main">Having a feast? Don't worry</h1>
                   <h3 className="heading__secondary--sub u-margin-top-small">

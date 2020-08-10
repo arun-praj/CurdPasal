@@ -60,7 +60,7 @@ class Login extends Component {
                         <h3>Login to your account</h3>
                         <div className="login__form__group" style={{ margin: "0px" }}>
                            <GoogleLogin
-                              clientId="796317557299-6qekcgm9mdudfudt0accng26ngpv6jic.apps.googleusercontent.com"
+                              clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
                               buttonText="Login"
                               onSuccess={this.googleAuthHandler}
                               onFailure={this.failHandler}

@@ -1,6 +1,5 @@
 import React, { Fragment } from "react";
 import Mapv2 from "../../UI/Maps/Mapv2";
-// import Category from "./Category/Category";
 import Wrapper from "../../HOC/Wrapper/Wrapper";
 import Categories from "./Categories";
 import Carousel from "../../UI/Carousel/Carousel";
@@ -13,7 +12,9 @@ const Home = (props) => {
          <Wrapper>
             <Categories />
          </Wrapper>
-         <div>{/* <Mapv2 /> */}</div>
+         <div>
+            <Mapv2 />
+         </div>
       </Fragment>
    );
 };
