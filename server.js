@@ -8,6 +8,13 @@ const cookieSession = require("cookie-session");
 const cors = require("cors");
 const path = require("path");
 
+//security
+const mongoSanitize = require("express-mongo-sanitize");
+const helmet = require("helmet");
+const xss = require("xss-clean");
+const rateLimit = require("express-rate-limit");
+const hpp = require("hpp");
+
 const connect = require("./config/DBConnect");
 const log = require("./utils/logHandler");
 const errorHandler = require("./middleware/error");
@@ -30,10 +37,10 @@ if (process.env.NODE_ENV === "production") {
 
 //MIDDLEWARES
 // @DESC         Body-parser
-app.all("/*", function (req, res, next) {
-   res.header("Access-Control-Allow-Origin", "*");
-   next();
-});
+// app.all("/*", function (req, res, next) {
+//    res.header("Access-Control-Allow-Origin", "*");
+//    next();
+// });
 app.use(express.json());
 
 if (process.env.NODE_ENV !== "production") {
@@ -41,11 +48,22 @@ if (process.env.NODE_ENV !== "production") {
 }
 
 app.use(cookieParser());
-app.use(cors());
+app.use(cors()); //enables cors
+app.use(mongoSanitize()); //prevent SQL injection attacks ie. sanitize data
+app.use(helmet()); //secure http headers
+app.use(xss()); //prevents cross site scriptiog(XSS) attacks
+app.use(hpp()); // prevents http parameter pollution
+
+//rate limiting
+const limiter = rateLimit({
+   windowMs: 10 * 60 * 1000, //10 mins
+   max: 100,
+});
+app.use(limiter);
 // app.options("*", cors());
 app.use(
    cookieSession({
-      // milliseconds of a day
+      // milliseconds of a da y
       name: "google",
       maxAge: 24 * 60 * 60 * 1000,
       keys: [process.env.COOKIE_KEY],
@@ -54,7 +72,9 @@ app.use(
 
 //Routes
 app.use("/api/products", require("./routes/products"));
+app.use("/api/reviews", require("./routes/reviews"));
 app.use("/api/auth/", require("./routes/auth"));
+
 app.use("/", (req, res, next) => {
    log(req);
    res.json({
@@ -74,5 +94,5 @@ app.listen(PORT, () => log(`Server started at port : ${PORT}`, "success"));
 //HANDLE unhandled Promise Rejection
 process.on("unhandledRejection", (reason, promise) => {
    console.log(`Error : ${reason.message}`.red.bold);
-   server.close(() => process.exit(1));
+   // server.close(() => process.exit(1));
 });
