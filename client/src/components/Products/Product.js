@@ -6,8 +6,8 @@ import { loadProducts } from "../../redux/action/product";
 import Card from "./Card/Card";
 const Product = (props) => {
    const { products } = props;
-   useEffect(() => {
-      props.loadProducts();
+   useEffect(async () => {
+      await props.loadProducts();
    }, []);
    // console.log(props.products);
    let val;
