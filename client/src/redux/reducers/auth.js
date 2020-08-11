@@ -7,7 +7,6 @@ import {
    LOGIN_FAILED,
    LOGOUT,
 } from "../action/types";
-// import Cookies from "js-cookie";
 const initialState = {
    token: localStorage.getItem("token"),
    isAuthenticated: false,
@@ -29,7 +28,6 @@ const authReducer = (state = initialState, action) => {
       case LOGIN_FAILED:
       case REGISTER_FAILED:
       case AUTH_ERROR:
-         // Cookies.remove("token");
          localStorage.removeItem("token");
          return {
             ...state,

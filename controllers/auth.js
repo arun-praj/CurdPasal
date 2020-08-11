@@ -5,20 +5,13 @@ const User = require("../models/User");
 const ErrorResponse = require("../utils/errorResponse");
 const asyncHandler = require("../middleware/async");
 
-//Get token from model, create cookie and send response
+//Get token from model, and send response
 const sendTokenResponse = (user, statusCode, res) => {
    //Create/Sign Token from User model
 
    const token = user.getSignedJwt();
-   const options = {
-      //30days
-      expires: new Date(Date.now() + process.env.JWT_COOKIE_EXPIRE * 23 * 60 * 60 * 1000),
-      httpOnly: true,
-   };
-   if (process.env.NODE_ENV === "PRODUCTION") {
-      options.secure = true;
-   }
-   res.status(statusCode).cookie("token", token, options).json({
+
+   res.status(statusCode).json({
       success: true,
       token,
    });

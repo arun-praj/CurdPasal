@@ -3,7 +3,6 @@ const dotenv = require("dotenv");
 const colors = require("colors");
 const listEndpoints = require("express-list-endpoints");
 const volleyball = require("volleyball");
-const cookieParser = require("cookie-parser");
 const cookieSession = require("cookie-session");
 const cors = require("cors");
 const path = require("path");
@@ -38,7 +37,6 @@ if (process.env.NODE_ENV === "production") {
 //MIDDLEWARES
 app.use(express.json());
 
-app.use(cookieParser());
 app.use(cors()); //enables cors
 app.use(mongoSanitize()); //prevent SQL injection attacks ie. sanitize data
 app.use(helmet()); //secure http headers
