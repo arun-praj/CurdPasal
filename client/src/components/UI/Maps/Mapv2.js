@@ -4,6 +4,7 @@ import { Layer, Feature } from "react-mapbox-gl";
 import Icon from "./113-512.webp";
 import { MapBoxToken } from "./accessToken";
 import * as StoreDate from "./Store_data.json";
+
 const Map = MapBoxToken;
 
 class Mapv2 extends Component {
