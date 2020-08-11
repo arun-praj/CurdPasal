@@ -10,4 +10,7 @@ export const LOGIN_FAILED = "LOGIN_FAILED";
 export const USER_LOADED = "USER_LOADED";
 export const AUTH_ERROR = "AUTH_ERROR";
 
+export const PRODUCTS_LOADED = "PRODUCTS_LOADED";
+export const PRODUCTS_LOAD_FAIL = "PRODUCTS_LOAD_FAIL";
+
 export const LOGOUT = "LOGOUT";

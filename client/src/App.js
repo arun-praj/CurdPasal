@@ -47,6 +47,7 @@ class App extends Component {
             <Fragment>
                {backdrop}
                <NavBar drawerToggle={this.drawerToggleClickHandler} />
+
                <SideDrawer
                   isOpen={this.state.isSideDrawerOpen}
                   onLoginBtnClick={this.loginModalClickHandler}
@@ -60,6 +61,7 @@ class App extends Component {
                      <Route component={Error} />
                   </Switch>
                </Suspense>
+
                <Footer />
             </Fragment>
          </Provider>

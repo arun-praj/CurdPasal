@@ -36,16 +36,7 @@ if (process.env.NODE_ENV === "production") {
 }
 
 //MIDDLEWARES
-// @DESC         Body-parser
-// app.all("/*", function (req, res, next) {
-//    res.header("Access-Control-Allow-Origin", "*");
-//    next();
-// });
 app.use(express.json());
-
-if (process.env.NODE_ENV !== "production") {
-   app.use(volleyball);
-}
 
 app.use(cookieParser());
 app.use(cors()); //enables cors
@@ -57,10 +48,12 @@ app.use(hpp()); // prevents http parameter pollution
 //rate limiting
 const limiter = rateLimit({
    windowMs: 10 * 60 * 1000, //10 mins
-   max: 100,
+   max: 10000,
 });
 app.use(limiter);
-// app.options("*", cors());
+if (process.env.NODE_ENV !== "production") {
+   app.use(volleyball);
+}
 app.use(
    cookieSession({
       // milliseconds of a da y

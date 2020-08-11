@@ -6,7 +6,7 @@ import {
    LOGIN_FAILED,
    LOGIN_SUCCESS,
    LOGOUT,
-} from "../action/types";
+} from "./types";
 import axios from "axios";
 
 import { setAlert } from "./alert";
