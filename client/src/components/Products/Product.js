@@ -1,21 +1,10 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 
 import { loadProducts } from "../../redux/action/product";
 
 import Card from "./Card/Card";
 
-// class Product extends Component {
-//    componentDidMount() {
-//       this.props.loadProducts();
-//    }
-
-//    render() {
-//       let val;
-
-//       return <> Leage of legends</>;
-//    }
-// }
 const Product = (props) => {
    const [prodcut, setProducts] = useState([]);
    const { products } = props;
