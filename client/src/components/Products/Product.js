@@ -12,9 +12,7 @@ class Product extends Component {
 
    render() {
       let val;
-      if (this.props.loading) {
-         val = <div>Loading</div>;
-      } else {
+      {
          val = this.props.products.map((el) => {
             return <Card key={el._id} data={el} />;
          });
