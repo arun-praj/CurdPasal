@@ -1,13 +1,15 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 
 import { loadProducts } from "../../redux/action/product";
 
 import Card from "./Card/Card";
 const Product = (props) => {
+   const [prodcut, setProducts] = useState([]);
    const { products } = props;
-   useEffect(async () => {
-      await props.loadProducts();
+   useEffect(() => {
+      props.loadProducts();
+      setProducts((prev) => [...prev, products]);
    }, []);
    // console.log(props.products);
    let val;
