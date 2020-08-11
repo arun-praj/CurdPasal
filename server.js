@@ -6,7 +6,7 @@ const volleyball = require("volleyball");
 const cookieSession = require("cookie-session");
 const cors = require("cors");
 const path = require("path");
-
+const proxy = require("http-proxy-middleware");
 //security
 const mongoSanitize = require("express-mongo-sanitize");
 const helmet = require("helmet");
@@ -26,6 +26,10 @@ dotenv.config({
 });
 
 connect();
+module.exports = function (app) {
+   // add other server routes to path array
+   app.use(proxy(["/api"], { target: "http://localhost:8000" }));
+};
 
 if (process.env.NODE_ENV === "production") {
    app.use(express.static("client/build"));
