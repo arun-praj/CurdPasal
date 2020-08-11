@@ -12,12 +12,8 @@ class Product extends Component {
 
    render() {
       let val;
-      {
-         val = this.props.products.map((el) => {
-            return <Card key={el._id} data={el} />;
-         });
-      }
-      return <> {val}</>;
+
+      return <> Leage of legends</>;
    }
 }
 // const Product = (props) => {
