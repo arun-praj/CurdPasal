@@ -26,7 +26,7 @@ class App extends Component {
       isLoginModalOpen: false,
       isSignupModalOpen: false,
    };
-   componentWillMount() {
+   componentDidMount() {
       store.dispatch(loadUser());
    }
    componentDidUpdate() {

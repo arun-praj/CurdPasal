@@ -37,7 +37,11 @@ class Mapv2 extends Component {
                   layout={{ "icon-image": "myImage", "icon-allow-overlap": true }}
                   images={images}>
                   {StoreDate.features.map((el) => (
-                     <Feature id={el.properties.STORE_ID} coordinates={el.geometry.coordinates} />
+                     <Feature
+                        key={el.properties.STORE_ID}
+                        id={el.properties.STORE_ID}
+                        coordinates={el.geometry.coordinates}
+                     />
                   ))}
                </Layer>
             </Map>

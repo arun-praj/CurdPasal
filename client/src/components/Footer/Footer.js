@@ -2,11 +2,11 @@ import React from "react";
 import "./Footer.scss";
 const Footer = (props) => (
    <div>
-      <footer class="section-footer">
-         <div class="footer-container">
-            <div class="grid">
+      <footer className="section-footer">
+         <div className="footer-container">
+            <div className="grid">
                <ul>
-                  <li class="bold">NAVIGATE</li>
+                  <li className="bold">NAVIGATE</li>
                   <li>
                      <a href="/">Home</a>
                   </li>
@@ -29,9 +29,9 @@ const Footer = (props) => (
                   </li>
                </ul>
             </div>
-            <div class="grid">
+            <div className="grid">
                <ul>
-                  <li class="bold">SERVICES</li>
+                  <li className="bold">SERVICES</li>
                   <li>
                      <a href="/">Delivery</a>
                   </li>
@@ -42,8 +42,8 @@ const Footer = (props) => (
                      <a href="/">Rating</a>
                   </li>
                </ul>
-               <ul class="u-margin-top-v-small">
-                  <li class="bold">
+               <ul className="u-margin-top-v-small">
+                  <li className="bold">
                      <a href="/">PARTNERS</a>
                   </li>
                   <li>
@@ -54,36 +54,40 @@ const Footer = (props) => (
                   </li>
                </ul>
             </div>
-            <div class="grid">
+            <div className="grid">
                <ul>
-                  <li class="bold">OUR SUPPLIERS</li>
+                  <li className="bold">OUR SUPPLIERS</li>
                   <li>Bhaptapur Dairy</li>
                   <li>Babin Dairy Pvt.</li>
                </ul>
             </div>
-            <div class="grid">
+            <div className="grid">
                <ul>
-                  <li class="bold">STAY CONNNECTED</li>
-                  <li class="">Be the first to get exciting offers.</li>
+                  <li className="bold">STAY CONNNECTED</li>
+                  <li className="">Be the first to get exciting offers.</li>
                   <li>
-                     <form action="" class="footer-form">
-                        <input class="footer-input" type="email" placeholder="Enter your Email" />
-                        <input class="footer-btn form-btn" type="button" value="Subscribe" />
+                     <form action="" className="footer-form">
+                        <input
+                           className="footer-input"
+                           type="email"
+                           placeholder="Enter your Email"
+                        />
+                        <input className="footer-btn form-btn" type="button" value="Subscribe" />
                      </form>
                   </li>
-                  <li class="u-margin-top-v-small">
+                  <li className="u-margin-top-v-small">
                      <a
                         href="https://www.facebook.com/profile.php?id=100007125259498"
                         target="_blank"
                         rel="noopener noreferrer"
-                        class="nav__links ">
-                        <svg class="footer-icon footer-icon--facebook">
+                        className="nav__links ">
+                        <svg className="footer-icon footer-icon--facebook">
                            <use xlinkHref="/icons/tabler-sprite.svgatabler-brand-facebook" />
                         </svg>
                      </a>
                      &nbsp;&nbsp;&nbsp;&nbsp;
-                     <a href="a" class="nav__links ">
-                        <svg class="footer-icon footer-icon--google">
+                     <a href="a" className="nav__links ">
+                        <svg className="footer-icon footer-icon--google">
                            <use xlinkHref="/icons/tabler-sprite.svg#tabler-brand-google" />
                         </svg>
                      </a>
@@ -92,44 +96,44 @@ const Footer = (props) => (
                         href="https://twitter.com/kpsharmaoli?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"
                         target="_blank"
                         rel="noopener noreferrer"
-                        class="nav__links ">
-                        <svg class="footer-icon footer-icon--twitter">
+                        className="nav__links ">
+                        <svg className="footer-icon footer-icon--twitter">
                            <use xlinkHref="/icons/tabler-sprite.svg#tabler-brand-twitter" />
                         </svg>
                      </a>
                   </li>
                </ul>
             </div>
-            <div class="grid">
+            <div className="grid">
                <ul>
-                  <li class="bold">CONTACT US</li>
-                  <li class="contact-row">
+                  <li className="bold">CONTACT US</li>
+                  <li className="contact-row">
                      <div>
-                        <svg class="footer-icon footer-icon--twitter">
+                        <svg className="footer-icon footer-icon--twitter">
                            <use xlinkHref="/icons/tabler-sprite.svg#tabler-phone-call" />
                         </svg>
                      </div>
-                     <div class="u-margin-left-small">
+                     <div className="u-margin-left-small">
                         <div>+977 9860465326</div>
                         <div>01 6614243</div>
                      </div>
                   </li>
-                  <li class="contact-row">
+                  <li className="contact-row">
                      <div>
-                        <svg class="footer-icon footer-icon--gmail">
+                        <svg className="footer-icon footer-icon--gmail">
                            <use xlinkHref="/icons/tabler-sprite.svg#tabler-send" />
                         </svg>
                      </div>
-                     <div class="u-margin-left-small">
+                     <div className="u-margin-left-small">
                         <div>datheputhe.dairy@gmail.com</div>
                      </div>
                   </li>
                </ul>
             </div>
          </div>
-         <div class="copyrights">
-            <div class="copyrights-container">
-               <div class="grid-1">
+         <div className="copyrights">
+            <div className="copyrights-container">
+               <div className="grid-1">
                   <div>Copyright &copy; 2020 Datheputhe Dairy. All right reserved.</div>
                   <div>
                      <li>
@@ -140,8 +144,8 @@ const Footer = (props) => (
                   </div>
                </div>
 
-               <div class="grid-2">
-                  <img src="/icons/nepal.svg" alt="Nepal Flag" class="footer-icon--flag" />
+               <div className="grid-2">
+                  <img src="/icons/nepal.svg" alt="Nepal Flag" className="footer-icon--flag" />
                </div>
             </div>
          </div>

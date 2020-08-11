@@ -13,15 +13,15 @@ const Error = (props) => {
    return (
       <div>
          <section className="page_404">
-            <div class="four_zero_four_bg">
-               <h1 class="text-center ">404</h1>
+            <div className="four_zero_four_bg">
+               <h1 className="text-center ">404</h1>
             </div>
-            <div class="contant_box_404">
-               <h3 class="h2">Looks like you're lost</h3>
+            <div className="contant_box_404">
+               <h3 className="h2">Looks like you're lost</h3>
 
                <p>The page you are looking for is not available!</p>
 
-               <Link to="/" href="" class="link_404">
+               <Link to="/" href="" className="link_404">
                   Go to Home
                </Link>
             </div>

@@ -1,20 +1,21 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 
 import { loadProducts } from "../../redux/action/product";
 
 import Card from "./Card/Card";
 const Product = (props) => {
+   const { products } = props;
    useEffect(() => {
       props.loadProducts();
    }, []);
-   console.log(props.products);
+   // console.log(props.products);
    let val;
    if (props.loading) {
       val = <div>Loading</div>;
    } else {
       val = props.products.map((el) => {
-         return <Card key={el.id} data={el} />;
+         return <Card key={el._id} data={el} />;
       });
    }
    return <div>{val}</div>;
