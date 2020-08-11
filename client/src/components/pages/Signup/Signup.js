@@ -31,6 +31,9 @@ class Signup extends Component {
       // latitude: "",
       // longitude: "",
    };
+   componentDidUpdate() {
+      window.scrollTo(0, 0);
+   }
 
    setPointsHandler = (coords) => {
       this.setState({

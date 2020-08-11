@@ -1,25 +1,23 @@
-import React, { Component } from "react";
-import Slider from "react-slick";
-
+import React from "react";
+import AliceCarousel from "react-alice-carousel";
+import "react-alice-carousel/lib/alice-carousel.css";
 import "./Header.scss";
 
-// import "~slick-carousel/slick/slick.css";
-// import "~slick-carousel/slick/slick-theme.css";
-
-export default class SimpleSlider extends Component {
-   render() {
-      const settings = {
-         dots: false,
-         infinite: true,
-         speed: 500,
-         slidesToShow: 1,
-         slidesToScroll: 1,
-         autoplay: true,
-         autoplaySpeed: 20000,
-      };
-      return (
-         <Slider {...settings}>
-            <div className="carousel carousel-1">
+const Carousel = () => {
+   const handleOnDragStart = (e) => e.preventDefault();
+   const settings = {
+      dotsDisabled: true,
+      buttonsDisabled: true,
+      infinite: true,
+      autoPlay: true,
+      autoPlayInterval: 5000,
+      stopAutoPlayOnHover: true,
+      swipeDisabled: true,
+   };
+   return (
+      <div style={{ maxWidth: "1200px", margin: "auto" }}>
+         <AliceCarousel mouseTrackingEnabled dotsDisabled {...settings}>
+            <div className="carousel carousel-1" onDragStart={handleOnDragStart}>
                <div className="board board-1">
                   <h1 className="heading__primary--main">We serve you best dairy in town.</h1>
                   <h3 className="heading__secondary--sub u-margin-top-small">
@@ -41,7 +39,7 @@ export default class SimpleSlider extends Component {
                </div>
             </div>
 
-            <div className="carousel carousel-2">
+            <div className="carousel carousel-2" onDragStart={handleOnDragStart}>
                <div className="board board-2">
                   <h1 className="heading__primary--main">Having a feast? Don't worry</h1>
                   <h3 className="heading__secondary--sub u-margin-top-small">
@@ -57,7 +55,9 @@ export default class SimpleSlider extends Component {
                   </form>
                </div>
             </div>
-         </Slider>
-      );
-   }
-}
+         </AliceCarousel>
+      </div>
+   );
+};
+
+export default Carousel;

@@ -1,0 +1,29 @@
+.badge {
+   position: absolute;
+   top: 15px;
+   //    left: -10px;
+   //    z-index: 9999;
+   color: #29303b;
+   font-size: 9px;
+   background-color: #f4c150;
+   padding: 1px 8px;
+   font-weight: 700;
+   border-radius: 3px;
+   line-height: 1.5;
+   text-align: center;
+   text-transform: uppercase;
+   &::after {
+      background: inherit;
+      content: "";
+      height: 11px;
+      position: absolute;
+      top: 2px;
+      transform: rotate(45deg);
+      width: 11px;
+      z-index: 1;
+      display: block;
+      border-radius: 3px;
+      right: -4px;
+      //   border: #f4c150;
+   }
+}
