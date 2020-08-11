@@ -1,5 +1,6 @@
 import ReactMapboxGl from "react-mapbox-gl";
 
 export const MapBoxToken = ReactMapboxGl({
-   accessToken: process.env.REACT_APP_MAPBOX_ACCESS_TOKEN,
+   accessToken:
+      "pk.eyJ1IjoiYXJ1bmtwMTEyMiIsImEiOiJja2NyYjU5YzMwOHM3MzBvZTJzdDAwcHV0In0.QIXyccHR_ZX9umVzA2XUUQ",
 });
