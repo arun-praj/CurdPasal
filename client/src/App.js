@@ -5,6 +5,7 @@ import { Switch, Route } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./redux/store";
 import { loadUser } from "./redux/action/auth";
+import MoonLoader from "react-spinners/MoonLoader";
 
 // import Home from "./components/pages/Home/Home";
 
@@ -44,26 +45,39 @@ class App extends Component {
       }
       return (
          <Provider store={store}>
-            <Fragment>
-               {backdrop}
-               <NavBar drawerToggle={this.drawerToggleClickHandler} />
+            <Suspense
+               fallback={
+                  <div
+                     style={{
+                        position: "absolute",
+                        left: "50%",
+                        top: "50%",
+                        transform: "translate(-50%,-50%)",
+                        textAlign: "center",
+                     }}>
+                     <MoonLoader size={35} color={"#123abc"} />;
+                  </div>
+               }>
+               <Fragment>
+                  {backdrop}
+                  <NavBar drawerToggle={this.drawerToggleClickHandler} />
 
-               <SideDrawer
-                  isOpen={this.state.isSideDrawerOpen}
-                  onLoginBtnClick={this.loginModalClickHandler}
-                  onSignupBtnClick={this.signupModalClickHandler}
-               />
-               <Suspense fallback={<h1>Loading</h1>}>
+                  <SideDrawer
+                     isOpen={this.state.isSideDrawerOpen}
+                     onLoginBtnClick={this.loginModalClickHandler}
+                     onSignupBtnClick={this.signupModalClickHandler}
+                  />
+
                   <Switch>
                      <Route exact path="/" component={Home} />
                      <Route exact path="/login" component={Login} />
                      <Route exact path="/signup" component={Signup} />
                      <Route component={Error} />
                   </Switch>
-               </Suspense>
 
-               <Footer />
-            </Fragment>
+                  <Footer />
+               </Fragment>
+            </Suspense>
          </Provider>
       );
    }

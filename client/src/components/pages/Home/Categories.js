@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./Categories.scss";
 
 const Categories = (props) => {
@@ -7,22 +8,22 @@ const Categories = (props) => {
          <h1 className="heading_main">Our Product Categories.</h1>
          <h2 className="heading_sub">Choose from one of the category below.</h2>
          <div className="topics">
-            <a href="./collection.php?page=yogurt" className="topic-box">
+            <Link to="/" className="topic-box">
                <img src="./backend/uploads/normal_dhau.jpg" alt="" className="topic-box-img" />
                Yogurt
-            </a>
-            <a href="./collection.php?page=cake" className="topic-box">
+            </Link>
+            <Link to="/" className="topic-box">
                <img src="./backend/uploads/red-velvet.jpg" alt="" className="topic-box-img" />
                Cake
-            </a>
-            <a href="./collection.php?page=cheese" className="topic-box">
+            </Link>
+            <Link to="/" className="topic-box">
                <img
                   src="./backend/uploads/Nepali-yak-cheese.jpg"
                   alt=""
                   className="topic-box-img"
                />
                Cheese
-            </a>
+            </Link>
             <div className="topic-box">
                Butter
                <span className="topic-box-text-sm">Comming Soon!</span>
