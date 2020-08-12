@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
+import MoonLoader from "react-spinners/MoonLoader";
 
 import { loadProducts } from "../../redux/action/product";
 
@@ -15,7 +16,11 @@ const Product = (props) => {
    // console.log(props.products);
    let val;
    if (props.loading) {
-      val = <div>Loading</div>;
+      val = (
+         <div style={{ position: "absolute", left: "50%", textAlign: "center" }}>
+            <MoonLoader size={35} color={"#123abc"} loading={props.loading} />;
+         </div>
+      );
    } else {
       val = props.products.map((el) => {
          return <Card key={el._id} data={el} />;
