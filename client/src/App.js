@@ -12,15 +12,19 @@ import MoonLoader from "react-spinners/MoonLoader";
 import NavBar from "./components/NavBar/NavBar";
 import Backdrop from "./components/UI/Backdrop/Backdrop";
 import SideDrawer from "./components/SideDrawer/SideDrawer";
-import Login from "./components/pages/Login/Login";
-import Signup from "./components/pages/Signup/Signup";
-import Error from "./components/pages/Error/Error";
-import Footer from "./components/Footer/FooterAccordion";
+// import Login from "./components/pages/Login/Login";
+// import Signup from "./components/pages/Signup/Signup";
+// import Error from "./components/pages/Error/Error";
+// import Footer from "./components/Footer/FooterAccordion";
 // import Footer from "./components/Footer/Footer";
 
 import "./utilities.scss";
 
 const Home = lazy(() => import("./components/pages/Home/Home"));
+const Login = lazy(() => import("./components/pages/Login/Login"));
+const Signup = lazy(() => import("./components/pages/Signup/Signup"));
+const Error = lazy(() => import("./components/pages/Error/Error"));
+const Footer = lazy(() => import("./components/Footer/FooterAccordion"));
 
 class App extends Component {
    state = {
