@@ -13,6 +13,9 @@ class Login extends Component {
       email: "",
       password: "",
    };
+   componentDidMount() {
+      window.scrollTo(0, 0);
+   }
    onSubmitHandler = (e) => {
       e.preventDefault();
       // this.props.setAlert(this.state.email, "success");
