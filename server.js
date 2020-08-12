@@ -70,7 +70,7 @@ app.use("/api/products", require("./routes/products"));
 app.use("/api/reviews", require("./routes/reviews"));
 app.use("/api/auth/", require("./routes/auth"));
 
-app.use("/", (req, res, next) => {
+app.use("/api", (req, res, next) => {
    log(req);
    res.json({
       "🖥 Server Status": "Running...🙋‍♀️🙋‍♀️🙋‍♀️🙋‍♀️",
