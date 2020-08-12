@@ -15,9 +15,7 @@ const Home = (props) => {
             <Categories />
             <Product />
          </Wrapper>
-         <div>
-            <Mapv2 />
-         </div>
+         <div>{/* <Mapv2 /> */}</div>
       </Fragment>
    );
 };
