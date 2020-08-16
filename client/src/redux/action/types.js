@@ -13,4 +13,9 @@ export const AUTH_ERROR = "AUTH_ERROR";
 export const PRODUCTS_LOADED = "PRODUCTS_LOADED";
 export const PRODUCTS_LOAD_FAIL = "PRODUCTS_LOAD_FAIL";
 
+export const GET_PRODUCT = "GET_PRODUCT";
+
+export const REVIEWS_LOADED = "LOAD_REVIEW";
+export const REVIEWS_LOAD_FAILED = "REVIEWS_LOAD_FAILED";
+
 export const LOGOUT = "LOGOUT";

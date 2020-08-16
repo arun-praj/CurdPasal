@@ -3,17 +3,17 @@ import Rating from "react-rating";
 // import Badge from "../../UI/Bagde/Badge";
 import { Link } from "react-router-dom";
 import "./Card.scss";
-import "../Product.scss";
+// import "./Product.scss";
 
 const Card = (props) => {
    // console.log(props.data);
-   const { id, photo, name, description, averageRating, price } = props.data;
+   const { _id, photo, name, description, averageRating, price } = props.data;
    // console.log(careers);
 
    // console.log(props.badge);
    return (
       // <Link to={{ pathname: `/bootcamps/${id}`, props: props.badge }} className="card">
-      <Link to="" className="card">
+      <Link to={`/products/${_id}`} className="card">
          <div className="card--img__container">
             <img
                src="https://image.tmdb.org/t/p/w500/kqjL17yufvn9OVLyXYpvtyrFfak.jpg"

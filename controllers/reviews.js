@@ -15,6 +15,9 @@ exports.getReviews = asyncHandler(async (req, res, next) => {
    if (req.params.productId) {
       const reviews = await Review.find({
          product: req.params.productId,
+      }).populate({
+         path: "user",
+         select: "firstName lastName photo ",
       });
       return res.status(200).json({
          success: true,
@@ -22,7 +25,10 @@ exports.getReviews = asyncHandler(async (req, res, next) => {
          data: reviews,
       });
    }
-   const reviews = await Review.find();
+   const reviews = await Review.find().populate({
+      path: "user",
+      select: "firstName lastName photo ",
+   });
    res.status(200).json({
       success: true,
       count: reviews.length,

@@ -6,7 +6,7 @@ const Badge = (props) => {
    //  return props.type = badgeTypes ;
    // });
 
-   return <div className="badge">Highest Rated</div>;
+   return <div className="badge">{props.type}</div>;
 };
 
 export default Badge;

@@ -3,8 +3,9 @@ import { connect } from "react-redux";
 import MoonLoader from "react-spinners/MoonLoader";
 
 import { loadProducts } from "../../redux/action/product";
-
 import Card from "./Card/Card";
+
+import "./Product.scss";
 
 const Product = (props) => {
    const [prodcut, setProducts] = useState([]);
@@ -26,8 +27,7 @@ const Product = (props) => {
          return <Card key={el._id} data={el} />;
       });
    }
-   return <div>{val}</div>;
-   //    return <div>{props.loading === true ? : <div>product.map()</div>}</div>;
+   return <div className="cards">{val}</div>;
 };
 
 const mapStateToProps = (state) => ({

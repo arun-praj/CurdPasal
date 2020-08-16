@@ -19,12 +19,14 @@ import SideDrawer from "./components/SideDrawer/SideDrawer";
 // import Footer from "./components/Footer/Footer";
 
 import "./utilities.scss";
+// import ProductDetails from "./components/pages/ProductDetails/ProductDetails";
 
 const Home = lazy(() => import("./components/pages/Home/Home"));
 const Login = lazy(() => import("./components/pages/Login/Login"));
 const Signup = lazy(() => import("./components/pages/Signup/Signup"));
 const Error = lazy(() => import("./components/pages/Error/Error"));
 const Footer = lazy(() => import("./components/Footer/FooterAccordion"));
+const ProductDetails = lazy(() => import("./components/pages/ProductDetails/ProductDetails"));
 
 class App extends Component {
    state = {
@@ -77,6 +79,7 @@ class App extends Component {
                      <Route exact path="/" component={Home} />
                      <Route exact path="/login" component={Login} />
                      <Route exact path="/signup" component={Signup} />
+                     <Route exact path="/products/:id" component={ProductDetails} />
                      <Route component={Error} />
                   </Switch>
 

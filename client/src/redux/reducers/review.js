@@ -1,26 +1,26 @@
-import { PRODUCTS_LOADED, PRODUCTS_LOAD_FAIL } from "../action/types";
+import { REVIEWS_LOADED, REVIEWS_LOAD_FAILED } from "../action/types";
 const initialState = {
    loading: true,
-   products: null,
+   reviews: null,
 };
-const productReducer = (state = initialState, action) => {
+const reviewReducer = (state = initialState, action) => {
    const { type, payload } = action;
    switch (type) {
-      case PRODUCTS_LOADED:
+      case REVIEWS_LOADED:
          return {
             ...state,
             loading: false,
-            products: payload,
+            reviews: payload,
          };
 
-      case PRODUCTS_LOAD_FAIL:
+      case REVIEWS_LOAD_FAILED:
          return {
             ...state,
             loading: false,
-            products: null,
+            reviews: null,
          };
       default:
          return state;
    }
 };
-export default productReducer;
+export default reviewReducer;
