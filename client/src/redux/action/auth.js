@@ -21,7 +21,7 @@ export const loginWithGoogle = (response) => async (dispatch) => {
    const { sW, yu, sU, PK, OU } = response.Ot;
    const body = JSON.stringify({ sW, yu, sU, PK, OU });
    try {
-      const res = await axios.post("http://localhost:8000/api/auth/google", body, config);
+      const res = await axios.post("/api/auth/google", body, config);
       dispatch({
          type: LOGIN_SUCCESS,
          payload: res.data,

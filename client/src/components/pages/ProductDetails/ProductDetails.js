@@ -5,6 +5,7 @@ import { getProduct } from "../../../redux/action/product";
 import { loadReviews } from "../../../redux/action/review";
 
 import Button from "../../UI/Button/Button";
+import Sticky from "../../UI/Sticky/Sticky";
 
 import "./BootcampDetail.scss";
 // import store from "../../../redux/store";
@@ -187,6 +188,7 @@ class ProductDetails extends Component {
                      )}
                   </div>
                </section>
+               <Sticky />
             </div>
          );
       }
