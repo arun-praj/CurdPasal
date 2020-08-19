@@ -17,6 +17,7 @@ import SideDrawer from "./components/SideDrawer/SideDrawer";
 // import Error from "./components/pages/Error/Error";
 // import Footer from "./components/Footer/FooterAccordion";
 // import Footer from "./components/Footer/Footer";
+// import CartDetails from "./components/pages/CartDetails/CartDetails";
 
 import "./utilities.scss";
 // import ProductDetails from "./components/pages/ProductDetails/ProductDetails";
@@ -27,6 +28,7 @@ const Signup = lazy(() => import("./components/pages/Signup/Signup"));
 const Error = lazy(() => import("./components/pages/Error/Error"));
 const Footer = lazy(() => import("./components/Footer/FooterAccordion"));
 const ProductDetails = lazy(() => import("./components/pages/ProductDetails/ProductDetails"));
+const CartDetails = lazy(() => import("./components/pages/CartDetails/CartDetails"));
 
 class App extends Component {
    state = {
@@ -48,7 +50,7 @@ class App extends Component {
    render() {
       let backdrop = null;
       if (this.state.isSideDrawerOpen) {
-         backdrop = <Backdrop zIndex="100" drawerToggle={this.drawerToggleClickHandler} />;
+         backdrop = <Backdrop zIndex='100' drawerToggle={this.drawerToggleClickHandler} />;
       }
       return (
          <Provider store={store}>
@@ -76,10 +78,11 @@ class App extends Component {
                   />
 
                   <Switch>
-                     <Route exact path="/" component={Home} />
-                     <Route exact path="/login" component={Login} />
-                     <Route exact path="/signup" component={Signup} />
-                     <Route exact path="/products/:id" component={ProductDetails} />
+                     <Route exact path='/' component={Home} />
+                     <Route exact path='/login' component={Login} />
+                     <Route exact path='/signup' component={Signup} />
+                     <Route exact path='/products/:id' component={ProductDetails} />
+                     <Route exact path='/cart' component={CartDetails} />
                      <Route component={Error} />
                   </Switch>
 

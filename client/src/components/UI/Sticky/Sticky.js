@@ -1,5 +1,5 @@
 import React from "react";
-
+import "./Sticky.scss";
 const Sticky = (props) => {
    const style = {
       position: "fixed",
@@ -17,7 +17,11 @@ const Sticky = (props) => {
       boxShadow: " 0 -2px 4px rgba(0,0,0,.08), 0 -4px 12px rgba(0,0,0,.16)",
       padding: "16px 24px",
    };
-   return <div style={style}>This is a sickypy</div>;
+   return (
+      <div className='sticky__container' style={style}>
+         This is a sickypy
+      </div>
+   );
 };
 
 export default Sticky;

@@ -6,7 +6,7 @@
    background-color: rgb(31, 36, 45);
    background: linear-gradient(#29303b, #29303b, #29303b);
    &__bar {
-      max-width: 1200px;
+      max-width: 1000px;
       margin: auto;
       // padding: 0 20px;
       color: #ffffff;
@@ -96,16 +96,34 @@
          // border: 1px solid #686f7a;
 
          // top: 0;
+         .input_qty,
+         .btn_qty {
+            text-align: center;
+            font-weight: 700;
+            font-size: 14px;
+            max-width: 50px;
+            border: none;
+         }
+         .btn_qty {
+            border: 1px solid #dcdadb;
+            height: 32px;
+            width: 32px;
+            text-align: center;
+            border-radius: 50%;
+         }
+      }
+      .btn__container > :not(:last-child) {
+         margin-bottom: 10px;
       }
    }
 }
 .review {
    &__container {
       padding: 32px;
-      min-height: 10vh;
+      min-height: 200px;
    }
    &__wrapper {
-      max-width: 1200px;
+      max-width: 1000px;
       margin: auto;
    }
    &__card {
@@ -163,9 +181,10 @@
       align-items: flex-start;
       flex-direction: column;
    }
-   .btn__container {
-      display: none;
-   }
+   // .btn__container {
+   //    display: none;
+
+   // }
 }
 
 @media all and (max-width: 600px) {
