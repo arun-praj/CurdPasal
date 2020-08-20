@@ -1,7 +1,8 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 import "./Dropdown.scss";
-const Dropdown = (props) => {
+
+export const Dropdown = (props) => {
    return (
       <div>
          <div className='dropdown'>
@@ -14,4 +15,13 @@ const Dropdown = (props) => {
    );
 };
 
-export default Dropdown;
+export const Dropgroup = (props) => {
+   return <div className='dropdown__group'>{props.children}</div>;
+};
+export const DropLink = (props) => {
+   return (
+      <Link style={props.style} className='dropdown__link' to={props.to} onClick={props.onClick}>
+         {props.value}
+      </Link>
+   );
+};

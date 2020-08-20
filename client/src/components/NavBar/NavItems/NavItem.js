@@ -2,9 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 const NavItem = (props) => {
    const classes = ["navBar--item"];
-   if (props.borderType === "circle") {
-      classes.push("circle");
-   }
+   // if (props.borderType === "circle") {
+   //    classes.push("circle");
+   // }
    if (props.button) {
       classes.push("navBar--button");
       if (props.button === "primary") {
@@ -15,7 +15,7 @@ const NavItem = (props) => {
    }
    return (
       <li className={classes.join(" ")} onClick={props.onclick}>
-         <Link className="navBar--link" to={props.to}>
+         <Link className='navBar--link' to={props.to}>
             {props.data}
          </Link>
       </li>

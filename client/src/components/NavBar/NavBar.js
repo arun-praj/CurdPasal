@@ -16,7 +16,7 @@ import "./ToggleButton/ToggleButton";
 
 //UI component
 import ProfilePic from "../UI/ProfilePic/ProfilePic";
-import Dropdown from "../UI/Dropdown/Dropdown";
+import { Dropdown, Dropgroup, DropLink } from "../UI/Dropdown/Dropdown";
 
 //scss
 import "./NavBar.scss";
@@ -27,20 +27,11 @@ class NavBar extends Component {
       showSearchBar: false,
       isLoginModalOpen: false,
       isSignupModalOpen: false,
-      dropdownOpen: false,
    };
    searchIconClickHandler = (e) => {
       this.setState((prevState) => {
          return {
             showSearchBar: !prevState.showSearchBar,
-         };
-      });
-   };
-   dropdownClickHandler = (e) => {
-      e.preventDefault();
-      this.setState((prevState) => {
-         return {
-            dropdownOpen: !prevState.dropdownOpen,
          };
       });
    };
@@ -61,9 +52,16 @@ class NavBar extends Component {
          // marginRight: "5px",
       };
       const cartIcon = (
-         <svg style={iconStyle}>
-            <use href={sprite + "#icon-cart"} />
-         </svg>
+         <Dropdown
+            button={
+               <svg style={iconStyle}>
+                  <use href={sprite + "#icon-cart"} />
+               </svg>
+            }>
+            <Dropgroup>
+               <DropLink style={{ textAlign: "center" }} value='No item in cart' />
+            </Dropgroup>
+         </Dropdown>
       );
       if (!this.state.showSearchBar) {
          hamburger = (
@@ -72,7 +70,6 @@ class NavBar extends Component {
             </div>
          );
       }
-      const dropdown = <div>This is dropdown</div>;
       // const authLink = (
       //    <GoogleLogout
       //       clientId="796317557299-6qekcgm9mdudfudt0accng26ngpv6jic.apps.googleusercontent.com"
@@ -85,15 +82,24 @@ class NavBar extends Component {
             {this.props.loading ? (
                <span>Loading</span>
             ) : this.props.isAuthenticated ? (
-               <Dropdown button={<ProfilePic firstName='A' lastName='R' />}>
-                  <div className='dropdown__group'>
+               <Dropdown
+                  button={
+                     <ProfilePic
+                        firstName={this.props.user.data.firstName}
+                        lastName={this.props.user.data.lastName}
+                     />
+                  }>
+                  <Dropgroup>
                      <Link className='dropdown__link' to='/profile'>
                         <div style={{ display: "flex" }}>
                            <div
                               style={{
                                  marginRight: "14px",
                               }}>
-                              <ProfilePic firstName='A' lastName='R' />
+                              <ProfilePic
+                                 firstName={this.props.user.data.firstName}
+                                 lastName={this.props.user.data.lastName}
+                              />
                            </div>
                            <div
                               style={{
@@ -102,36 +108,27 @@ class NavBar extends Component {
                                  justifyContent: "space-between",
                               }}>
                               <span style={{ fontSize: "16px", fontWeight: "700" }}>
-                                 Arun Prajapati
+                                 {`${this.props.user.data.firstName} ${this.props.user.data.lastName}`}
                               </span>
                               <span
                                  style={{ fontSize: "12px", fontWeight: "500", color: "#73726c" }}>
-                                 arunkp1122@gmail.com
+                                 {this.props.user.data.email}
                               </span>
                            </div>
                         </div>
                      </Link>
-                  </div>
-                  <div className='dropdown__group'>
-                     <Link className='dropdown__link' to='/profile'>
-                        My Profile
-                     </Link>
+                  </Dropgroup>
+                  <Dropgroup>
+                     <DropLink value='My profile' to='/profile' />
+                     <DropLink value='Purchase History' to='/purchase-history' />
+                  </Dropgroup>
+                  <Dropgroup>
+                     <DropLink value='My cart' to='/cart' />
+                  </Dropgroup>
 
-                     <Link className='dropdown__link' to='/purchase-history'>
-                        Purchase History
-                     </Link>
-                  </div>
-                  <div className='dropdown__group'>
-                     <Link className='dropdown__link' to='/cart'>
-                        My cart
-                     </Link>
-                  </div>
-
-                  <div className='dropdown__group' onClick={this.props.logout}>
-                     <Link className='dropdown__link' to='/'>
-                        Log out
-                     </Link>
-                  </div>
+                  <Dropgroup>
+                     <DropLink onClick={this.props.logout} value=' Log out' to='/' />
+                  </Dropgroup>
                </Dropdown>
             ) : null}
          </div>
@@ -156,14 +153,10 @@ class NavBar extends Component {
                      <NavItem data='Home' to='/' />
                      <NavItem data='Products' to='/products' />
                      <div style={dividerLine}></div>
-                     <NavItem
-                        data={cartIcon}
-                        borderType='circle'
-                        type='dropdown'
-                        to='/cart'
-                        onclick={(e) => this.dropdownClickHandler}>
+                     {cartIcon}
+                     {/* <NavItem data={cartIcon} borderType='circle' type='dropdown' to='/cart'>
                         {this.state.dropdownOpen && dropdown}
-                     </NavItem>
+                     </NavItem> */}
                      {this.props.loading ? (
                         <h1>Loading</h1>
                      ) : this.props.isAuthenticated ? (
