@@ -58,16 +58,29 @@ exports.addToCart = asyncHandler(async (req, res, next) => {
 //@access           private
 exports.getCart = asyncHandler(async (req, res, next) => {
    const userId = req.user._id;
-   try {
-      const cart = await Cart.findOne({
-         userId: userId,
-      });
-      res.status(200).json({
-         success: true,
-         data: cart,
-      });
-   } catch (e) {
-      return next(new ErrorResponse("Something went wrong", 400));
+   if (userId) {
+      try {
+         const cart = await Cart.findOne({
+            userId: userId,
+         });
+         if (cart) {
+            res.status(200).json({
+               success: true,
+               count: cart.products.length,
+               data: cart,
+            });
+         } else {
+            res.status(200).json({
+               success: true,
+               count: 0,
+               data: {},
+            });
+         }
+      } catch (e) {
+         return next(new ErrorResponse("Something went wrong", 400));
+      }
+   } else {
+      return next(new ErrorResponse("Login to see your cart", 204));
    }
 });
 

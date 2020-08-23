@@ -2,28 +2,6 @@ import React from "react";
 import "./ProfilePic.scss";
 
 const ProfilePic = ({ firstName, lastName }) => {
-   // const randomColors = [
-   //    {
-   //       backgroundColor: "#69BDE3",
-   //       color: "#fff",
-   //    },
-   //    {
-   //       backgroundColor: "#0FBF84",
-   //       color: "#fff",
-   //    },
-   //    {
-   //       backgroundColor: "#48EBFF",
-   //       color: "#fff",
-   //    },
-   //    {
-   //       backgroundColor: "#07B2FF",
-   //       color: "#fff",
-   //    },
-   //    {
-   //       backgroundColor: "#131314",
-   //       color: "#fff",
-   //    },
-   // ];
    const randomColors = [
       {
          backgroundColor: "#0FBF84",

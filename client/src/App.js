@@ -5,6 +5,7 @@ import { Switch, Route } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./redux/store";
 import { loadUser } from "./redux/action/auth";
+import { getCart } from "./redux/action/cart";
 import MoonLoader from "react-spinners/MoonLoader";
 
 // import Home from "./components/pages/Home/Home";
@@ -38,10 +39,9 @@ class App extends Component {
    };
    componentDidMount() {
       store.dispatch(loadUser());
+      store.dispatch(getCart());
    }
-   componentDidUpdate() {
-      store.dispatch(loadUser());
-   }
+
    drawerToggleClickHandler = () => {
       this.setState((prevState) => {
          return { isSideDrawerOpen: !prevState.isSideDrawerOpen };

@@ -28,6 +28,7 @@ class NavBar extends Component {
       isLoginModalOpen: false,
       isSignupModalOpen: false,
    };
+
    searchIconClickHandler = (e) => {
       this.setState((prevState) => {
          return {
@@ -57,7 +58,8 @@ class NavBar extends Component {
                <svg style={iconStyle}>
                   <use href={sprite + "#icon-cart"} />
                </svg>
-            }>
+            }
+            to='/cart'>
             <Dropgroup>
                <DropLink style={{ textAlign: "center" }} value='No item in cart' />
             </Dropgroup>
@@ -154,9 +156,6 @@ class NavBar extends Component {
                      <NavItem data='Products' to='/products' />
                      <div style={dividerLine}></div>
                      {cartIcon}
-                     {/* <NavItem data={cartIcon} borderType='circle' type='dropdown' to='/cart'>
-                        {this.state.dropdownOpen && dropdown}
-                     </NavItem> */}
                      {this.props.loading ? (
                         <h1>Loading</h1>
                      ) : this.props.isAuthenticated ? (

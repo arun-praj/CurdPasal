@@ -5,7 +5,7 @@ const { protect } = require("../middleware/auth");
 const { addToCart, getCart, getProductFromCart } = require("../controllers/cart");
 
 router.post("/", protect, addToCart);
-router.get("/", protect, getCart);
+router.get("/", protect, protect, getCart);
 router.get("/:productId", protect, getProductFromCart);
 
 module.exports = router;

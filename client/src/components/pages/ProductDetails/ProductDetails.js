@@ -14,6 +14,7 @@ import Badge from "../../UI/Bagde/Badge";
 // import Button from "../../UI/Button/Button";
 import Sticky from "../../UI/Sticky/Sticky";
 import ProfilePic from "../../UI/ProfilePic/ProfilePic";
+import PromiseTracker from "../../UI/PromiseTracker/PromiseTracker";
 
 //scss
 import "./BootcampDetail.scss";
@@ -197,6 +198,7 @@ class ProductDetails extends Component {
                                           }}>
                                           Qty.
                                        </span>
+
                                        <button
                                           className='btn_qty'
                                           onClick={(e) => this.decrementHandler(e)}>
@@ -216,6 +218,7 @@ class ProductDetails extends Component {
                                     </div>
                                  )}
                               </div>
+
                               <button
                                  onClick={this.cartButtonClickHandler}
                                  style={{
@@ -227,9 +230,17 @@ class ProductDetails extends Component {
                                     color: "white",
                                     fontSize: "16px",
                                     fontWeight: "700",
+                                    textAlign: "center",
                                  }}>
-                                 {this.props.alreadyInCart ? <>Go to cart</> : <>Add to cart</>}
+                                 {this.props.alreadyInCart ? (
+                                    <>Go to cart</>
+                                 ) : (
+                                    <>
+                                       <PromiseTracker />
+                                    </>
+                                 )}
                               </button>
+
                               <button
                                  style={{
                                     width: "100%",

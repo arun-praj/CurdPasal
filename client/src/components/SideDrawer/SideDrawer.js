@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 
 import { connect } from "react-redux";
 import { logout } from "../../redux/action/auth";
-import sprite from "../../img/icon/sprite.svg";
 
 import NavButton from "../NavBar/NavButton/NavButton";
 
