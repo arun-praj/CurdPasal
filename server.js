@@ -42,10 +42,10 @@ if (process.env.NODE_ENV === "production") {
 app.use(express.json());
 
 app.use(cors()); //enables cors
-// app.use(mongoSanitize()); //prevent SQL injection attacks ie. sanitize data
-// app.use(helmet()); //secure http headers
-// app.use(xss()); //prevents cross site scriptiog(XSS) attacks
-// app.use(hpp()); // prevents http parameter pollution
+app.use(mongoSanitize()); //prevent SQL injection attacks ie. sanitize data
+app.use(helmet()); //secure http headers
+app.use(xss()); //prevents cross site scriptiog(XSS) attacks
+app.use(hpp()); // prevents http parameter pollution
 
 //rate limiting
 const limiter = rateLimit({
