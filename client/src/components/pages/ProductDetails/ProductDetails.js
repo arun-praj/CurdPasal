@@ -1,5 +1,5 @@
 //packages
-import React, { useEffect, Component } from "react";
+import React, { Component } from "react";
 import Rating from "react-rating";
 import MoonLoader from "react-spinners/MoonLoader";
 
@@ -33,7 +33,7 @@ class ProductDetails extends Component {
       this.props.getProductFromCart(this.props.match.params.id);
    }
    cartButtonClickHandler = (e) => {
-      const { name, price, count, _id } = this.props.currentProduct;
+      const { name, price, _id } = this.props.currentProduct;
       const body = {
          name,
          price,
@@ -66,7 +66,7 @@ class ProductDetails extends Component {
    };
    decrementHandler = (e) => {
       e.preventDefault();
-      if (this.state.count != 1) {
+      if (this.state.count !== 1) {
          this.setState((prevState) => {
             return {
                count: prevState.count - 1,
@@ -82,7 +82,7 @@ class ProductDetails extends Component {
    };
    render() {
       let val;
-      if (this.props.loading == true && this.props.currentProduct == null) {
+      if (this.props.loading === true && this.props.currentProduct === null) {
          val = (
             <div style={{ position: "absolute", left: "50%", top: "50%", textAlign: "center" }}>
                <MoonLoader size={35} color={"#123abc"} loading={this.props.loading} />;
@@ -99,6 +99,7 @@ class ProductDetails extends Component {
             createdAt,
             stock,
          } = this.props.currentProduct;
+         console.log(photo);
          val = (
             <div onLoad={() => this.setMaxCount(stock)}>
                <section className='bootCamp__detail'>

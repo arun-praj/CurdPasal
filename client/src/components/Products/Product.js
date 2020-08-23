@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import MoonLoader from "react-spinners/MoonLoader";
 
@@ -8,11 +8,11 @@ import Card from "./Card/Card";
 import "./Product.scss";
 
 const Product = (props) => {
-   const [prodcut, setProducts] = useState([]);
-   const { products } = props;
+   // const [product, setProducts] = useState([]);
+   // const { products } = props;
    useEffect(() => {
       props.loadProducts();
-      setProducts((prev) => [...prev, products]);
+      // setProducts((prev) => [...prev, products]);
    }, []);
    // console.log(props.products);
    let val;
@@ -27,7 +27,7 @@ const Product = (props) => {
          return <Card key={el._id} data={el} />;
       });
    }
-   return <div className="cards">{val}</div>;
+   return <div className='cards'>{val}</div>;
 };
 
 const mapStateToProps = (state) => ({

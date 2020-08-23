@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import AliceCarousel from "react-alice-carousel";
 import MoonLoader from "react-spinners/MoonLoader";
 import "react-alice-carousel/lib/alice-carousel.css";
@@ -9,7 +9,7 @@ import { loadProducts } from "../../../../redux/action/product";
 import Card from "../../../UI/Card/Card";
 
 const ProductCarousel = (props) => {
-   const [products, setProducts] = useState([]);
+   // const [products, setProducts] = useState([]);
    useEffect(() => {
       props.loadProducts();
       // await setProducts((prev) => [...prev, products]);
@@ -58,7 +58,7 @@ const ProductCarousel = (props) => {
       paddingLeft: 55, // in pixels
       paddingRight: 55,
    };
-   const handleOnDragStart = (e) => e.preventDefault();
+   // const handleOnDragStart = (e) => e.preventDefault();
    return (
       <>
          {props.loading ? (
@@ -66,7 +66,7 @@ const ProductCarousel = (props) => {
                <MoonLoader size={35} color={"#123abc"} loading={props.loading} />;
             </div>
          ) : (
-            <div className="cards">
+            <div className='cards'>
                <AliceCarousel
                   mouseTrackingEnabled
                   {...settings}

@@ -22,7 +22,7 @@ export const addToCart = (body) => async (dispatch) => {
       },
    };
 
-   const res = trackPromise(
+   trackPromise(
       axios
          .post("/api/cart", JSON.stringify(data), config)
          .then((res) => {
@@ -43,6 +43,7 @@ export const addToCart = (body) => async (dispatch) => {
             });
          })
    );
+
    // try {
    // dispatch({
    //    type: ADDED_TO_CART,
