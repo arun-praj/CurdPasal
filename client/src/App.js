@@ -3,7 +3,7 @@ import { Switch, Route } from "react-router-dom";
 
 //REDUX
 import { Provider } from "react-redux";
-import store from "./redux/store";
+import { store } from "./redux/store";
 import { loadUser } from "./redux/action/auth";
 import { getCart } from "./redux/action/cart";
 import MoonLoader from "react-spinners/MoonLoader";
@@ -53,43 +53,41 @@ class App extends Component {
          backdrop = <Backdrop zIndex='100' drawerToggle={this.drawerToggleClickHandler} />;
       }
       return (
-         <Provider store={store}>
-            <Suspense
-               fallback={
-                  <div
-                     style={{
-                        position: "absolute",
-                        left: "50%",
-                        top: "50%",
-                        transform: "translate(-50%,-50%)",
-                        textAlign: "center",
-                     }}>
-                     <MoonLoader size={35} color={"#123abc"} />;
-                  </div>
-               }>
-               <Fragment>
-                  {backdrop}
-                  <NavBar drawerToggle={this.drawerToggleClickHandler} />
+         <Suspense
+            fallback={
+               <div
+                  style={{
+                     position: "absolute",
+                     left: "50%",
+                     top: "50%",
+                     transform: "translate(-50%,-50%)",
+                     textAlign: "center",
+                  }}>
+                  <MoonLoader size={35} color={"#123abc"} />;
+               </div>
+            }>
+            <Fragment>
+               {backdrop}
+               <NavBar drawerToggle={this.drawerToggleClickHandler} />
 
-                  <SideDrawer
-                     isOpen={this.state.isSideDrawerOpen}
-                     onLoginBtnClick={this.loginModalClickHandler}
-                     onSignupBtnClick={this.signupModalClickHandler}
-                  />
+               <SideDrawer
+                  isOpen={this.state.isSideDrawerOpen}
+                  onLoginBtnClick={this.loginModalClickHandler}
+                  onSignupBtnClick={this.signupModalClickHandler}
+               />
 
-                  <Switch>
-                     <Route exact path='/' component={Home} />
-                     <Route exact path='/login' component={Login} />
-                     <Route exact path='/signup' component={Signup} />
-                     <Route exact path='/products/:id' component={ProductDetails} />
-                     <Route exact path='/cart' component={CartDetails} />
-                     <Route component={Error} />
-                  </Switch>
+               <Switch>
+                  <Route exact path='/' component={Home} />
+                  <Route exact path='/login' component={Login} />
+                  <Route exact path='/signup' component={Signup} />
+                  <Route exact path='/products/:id' component={ProductDetails} />
+                  <Route exact path='/cart' component={CartDetails} />
+                  <Route component={Error} />
+               </Switch>
 
-                  <Footer />
-               </Fragment>
-            </Suspense>
-         </Provider>
+               <Footer />
+            </Fragment>
+         </Suspense>
       );
    }
 }

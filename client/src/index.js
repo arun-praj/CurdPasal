@@ -1,20 +1,32 @@
 import React from "react";
 import ReactDOM from "react-dom";
+
+//redux
+import { Provider } from "react-redux";
+import { store, persistor } from "./redux/store";
+import { PersistGate } from "redux-persist/integration/react";
+
 import { BrowserRouter } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 
+//css
+import "react-toastify/dist/ReactToastify.css";
 import "./index.scss";
 import "./utilities.scss";
 import App from "./App";
 // import Playground from "./Playground";
 
 ReactDOM.render(
-   <BrowserRouter>
-      {/* <Playground /> */}
-      <App />
-      <ToastContainer />
-   </BrowserRouter>,
+   <Provider store={store}>
+      <BrowserRouter>
+         {/* <Playground /> */}
+         <PersistGate persistor={persistor}>
+            <App />
+         </PersistGate>
+         <ToastContainer />
+      </BrowserRouter>
+   </Provider>,
+
    document.getElementById("root")
 );
 
