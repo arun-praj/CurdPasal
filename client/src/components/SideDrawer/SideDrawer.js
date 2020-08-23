@@ -96,7 +96,7 @@ const SideDrawer = (props) => {
             <ul className='sideDrawer__list'>
                <li className='sideDrawer__list--item '></li>
                <li className='sideDrawer__list--item'>
-                  <Link href='/' className='sideDrawer__list--link'>
+                  <Link to='/' className='sideDrawer__list--link'>
                      <svg className='sideDrawer__list--icon'>
                         <use xlinkHref='/icons/tabler-sprite.svg#tabler-brand-github' />
                      </svg>
@@ -104,7 +104,7 @@ const SideDrawer = (props) => {
                   </Link>
                </li>
                <li className='sideDrawer__list--item'>
-                  <Link href='/' className='sideDrawer__list--link'>
+                  <Link to='/' className='sideDrawer__list--link'>
                      <svg className='sideDrawer__list--icon'>
                         <use xlinkHref='/icons/tabler-sprite.svg#tabler-history' />
                      </svg>
@@ -114,7 +114,7 @@ const SideDrawer = (props) => {
             </ul>
             <ul className='sideDrawer__list'>
                <li className='sideDrawer__list--item'>
-                  <Link href='/' className='sideDrawer__list--link'>
+                  <Link to='/' className='sideDrawer__list--link'>
                      <svg className='sideDrawer__list--icon'>
                         <use xlinkHref='/icons/tabler-sprite.svg#tabler-shopping-cart' />
                      </svg>
@@ -124,7 +124,7 @@ const SideDrawer = (props) => {
             </ul>
             <ul className='sideDrawer__list'>
                <li className='sideDrawer__list--item'>
-                  <Link href='/' className='sideDrawer__list--link'>
+                  <Link to='/' className='sideDrawer__list--link'>
                      <svg className='sideDrawer__list--icon'>
                         <use xlinkHref='/icons/tabler-sprite.svg#tabler-logout' />
                      </svg>

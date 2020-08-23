@@ -61,7 +61,7 @@ class NavBar extends Component {
             }
             to='/cart'>
             <Dropgroup>
-               <DropLink style={{ textAlign: "center" }} value='No item in cart' />
+               <DropLink style={{ textAlign: "center" }} to='' value='No item in cart' />
             </Dropgroup>
          </Dropdown>
       );
@@ -85,6 +85,7 @@ class NavBar extends Component {
                <span>Loading</span>
             ) : this.props.isAuthenticated ? (
                <Dropdown
+                  to=' '
                   button={
                      <ProfilePic
                         firstName={this.props.user.data.firstName}
