@@ -7,9 +7,11 @@ import "react-toastify/dist/ReactToastify.css";
 import "./index.scss";
 import "./utilities.scss";
 import App from "./App";
+import Playground from "./Playground";
 
 ReactDOM.render(
    <BrowserRouter>
+      {/* <Playground /> */}
       <App />
       <ToastContainer />
    </BrowserRouter>,

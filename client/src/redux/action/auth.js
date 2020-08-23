@@ -19,6 +19,7 @@ export const loginWithGoogle = (response) => async (dispatch) => {
       },
    };
    const { sW, yu, sU, PK, OU } = response.Ot;
+
    const body = JSON.stringify({ sW, yu, sU, PK, OU });
    try {
       const res = await axios.post("/api/auth/google", body, config);
@@ -28,7 +29,7 @@ export const loginWithGoogle = (response) => async (dispatch) => {
       });
    } catch (e) {
       if (e.response) {
-         dispatch(setAlert(e.response.data.error, "error"));
+         dispatch(setAlert(e.response, "error"));
       } else {
          dispatch(setAlert("SERVER ERROR", "error"));
       }
@@ -49,12 +50,14 @@ export const login = ({ email, password }) => async (dispatch) => {
    //    console.log(body);
    try {
       const res = await axios.post("/api/auth/login", body, config);
+      setAuthToken(res.data.token);
+      // console.log(res.data);
       dispatch({
          type: LOGIN_SUCCESS,
          payload: res.data,
       });
    } catch (e) {
-      // dispatch(setAlert("SERVER ERROR", "error"));
+      // dispatch(setAlert("SERVER ERROR", "error"));`
       if (e.response.data.error) {
          dispatch(setAlert(e.response.data.error, "error"));
       } else {
@@ -87,6 +90,7 @@ export const register = (state) => async (dispatch) => {
    console.log(body);
    try {
       const res = await axios.post("/api/auth/register", body, config);
+      setAuthToken(res.data.token);
       dispatch({
          type: REGISTER_SUCCESS,
          payload: res.data,
@@ -112,7 +116,6 @@ export const loadUser = () => async (dispatch) => {
       };
       // console.log(localStorage.getItem("token"));
       const res = await axios.get("/api/auth/me", config);
-      console.log("res", res.data.data);
       if (res.data.data) {
          dispatch({
             type: USER_LOADED,

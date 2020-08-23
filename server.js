@@ -26,10 +26,10 @@ dotenv.config({
 });
 
 connect();
-module.exports = function (app) {
-   // add other server routes to path array
-   app.use(proxy(["/api"], { target: "http://localhost:8000" }));
-};
+// module.exports = function (app) {
+//    // add other server routes to path array
+//    app.use(proxy(["/api"], { target: "http://localhost:8000" }));
+// };
 
 if (process.env.NODE_ENV === "production") {
    app.use(express.static("client/build"));
@@ -42,10 +42,10 @@ if (process.env.NODE_ENV === "production") {
 app.use(express.json());
 
 app.use(cors()); //enables cors
-app.use(mongoSanitize()); //prevent SQL injection attacks ie. sanitize data
-app.use(helmet()); //secure http headers
-app.use(xss()); //prevents cross site scriptiog(XSS) attacks
-app.use(hpp()); // prevents http parameter pollution
+// app.use(mongoSanitize()); //prevent SQL injection attacks ie. sanitize data
+// app.use(helmet()); //secure http headers
+// app.use(xss()); //prevents cross site scriptiog(XSS) attacks
+// app.use(hpp()); // prevents http parameter pollution
 
 //rate limiting
 const limiter = rateLimit({
@@ -69,6 +69,8 @@ app.use(
 app.use("/api/products", require("./routes/products"));
 app.use("/api/reviews", require("./routes/reviews"));
 app.use("/api/auth/", require("./routes/auth"));
+app.use("/api/cart", require("./routes/cart"));
+
 app.use("/api", (req, res, next) => {
    log(req);
    res.json({
