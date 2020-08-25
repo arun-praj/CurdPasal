@@ -11,6 +11,8 @@ import axios from "axios";
 
 import { setAlert } from "./alert";
 import setAuthToken from "../utils/setAuthToken";
+import { store } from "../store";
+import { getCart } from "./cart";
 
 export const loginWithGoogle = (response) => async (dispatch) => {
    const config = {
@@ -56,6 +58,7 @@ export const login = ({ email, password }) => async (dispatch) => {
          type: LOGIN_SUCCESS,
          payload: res.data,
       });
+      store.dispatch(getCart());
    } catch (e) {
       // dispatch(setAlert("SERVER ERROR", "error"));`
       if (e.response.data.error) {

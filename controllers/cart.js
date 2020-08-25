@@ -11,7 +11,7 @@ const Cart = require("../models/Cart");
 //@Routes           POST /api/cart
 //@access           private
 exports.addToCart = asyncHandler(async (req, res, next) => {
-   const { productId, quantity, name, price } = req.body.products;
+   const { productId, quantity, name, description, price } = req.body.products;
    const userId = req.user._id;
    console.log(req.body.products, req.user.id);
    try {
@@ -29,7 +29,7 @@ exports.addToCart = asyncHandler(async (req, res, next) => {
             cart.products[itemIndex] = productItem;
          } else {
             //if product does not exist then
-            cart.products.push({ productId, quantity, name, price });
+            cart.products.push({ productId, quantity, name, price, description });
          }
          cart = await cart.save();
          return res.status(201).json({
@@ -40,7 +40,7 @@ exports.addToCart = asyncHandler(async (req, res, next) => {
       } else {
          const newCart = await Cart.create({
             userId,
-            products: [{ productId, quantity, name, price }],
+            products: [{ productId, quantity, name, price, description }],
          });
          return res.status(201).json({
             success: true,

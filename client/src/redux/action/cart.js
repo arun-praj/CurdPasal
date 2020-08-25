@@ -7,6 +7,8 @@ import {
    USER_CART_LOADED,
    USER_CART_LOAD_FAIL,
 } from "./types";
+
+import { store } from "../store";
 import { setAlert } from "./alert";
 import { trackPromise } from "react-promise-tracker";
 
@@ -33,6 +35,8 @@ export const addToCart = (body) => async (dispatch) => {
             dispatch({
                type: PRODUCT_ALREADY_IN_CART,
             });
+            store.dispatch(getCart());
+
             dispatch(setAlert("Successfully added to cart", "success"));
          })
          .catch((e) => {
@@ -43,7 +47,6 @@ export const addToCart = (body) => async (dispatch) => {
             });
          })
    );
-
    // try {
    // dispatch({
    //    type: ADDED_TO_CART,

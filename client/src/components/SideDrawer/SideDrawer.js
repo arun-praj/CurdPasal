@@ -57,8 +57,18 @@ const SideDrawer = (props) => {
    );
    const guestLink = (
       <>
-         <NavButton data='Sign&nbsp;Up' btnType='btn--primary' to='/signup' />
-         <NavButton data='Log&nbsp;In' btnType='navBar--button--secondary' to='/login' />
+         <NavButton
+            data='Sign&nbsp;Up'
+            btnType='btn--primary'
+            to='/signup'
+            onClick={props.onClick}
+         />
+         <NavButton
+            data='Log&nbsp;In'
+            btnType='navBar--button--secondary'
+            to='/login'
+            onClick={props.onClick}
+         />
       </>
    );
    return (

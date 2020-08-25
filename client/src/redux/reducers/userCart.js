@@ -1,6 +1,6 @@
 import { USER_CART_LOADED, USER_CART_LOAD_FAIL } from "../action/types";
 const initialState = {
-   cart: null,
+   cart: {},
    empty: true,
    loading: true,
 };
@@ -12,6 +12,7 @@ const userCartReducer = (state = initialState, action) => {
             ...state,
             loading: false,
             cart: payload,
+            empty: false,
          };
       case USER_CART_LOAD_FAIL:
          return {

@@ -2,7 +2,7 @@
 import React, { Component } from "react";
 import Rating from "react-rating";
 import MoonLoader from "react-spinners/MoonLoader";
-
+import moment from "moment";
 //redux
 import { connect } from "react-redux";
 import { getProduct } from "../../../redux/action/product";
@@ -33,12 +33,13 @@ class ProductDetails extends Component {
       this.props.getProductFromCart(this.props.match.params.id);
    }
    cartButtonClickHandler = (e) => {
-      const { name, price, _id } = this.props.currentProduct;
+      const { name, price, _id, description } = this.props.currentProduct;
       const body = {
          name,
          price,
          quantity: this.state.count,
          productId: _id,
+         description,
       };
       this.props.addToCart(body);
       // console.log(this.props.currentProduct);
@@ -121,7 +122,8 @@ class ProductDetails extends Component {
                               <svg stroke-width='125' className='bootCamp__detail--icon'>
                                  <use xlinkHref='/icons/tabler-sprite.svg#tabler-clock' />
                               </svg>
-                              <span>Created at {createdAt.split("T")[0]}</span>
+
+                              <span>Last added at {createdAt.split("T")[0]}</span>
                            </div>
 
                            <div>
@@ -281,6 +283,7 @@ class ProductDetails extends Component {
                         </div>
                      ) : (
                         this.props.reviews.map((review) => {
+                           // let date = new Date()
                            return (
                               <div className='review__card' key={review.user._id}>
                                  <div className='col-1'>
@@ -312,6 +315,15 @@ class ProductDetails extends Component {
                                        style={{
                                           fontSize: "14px",
                                        }}>{` (${review.rating.toFixed(1) / 2})`}</span>
+                                    <span
+                                       style={{
+                                          fontSize: "14px",
+                                          color: "#73726c",
+                                          fontWeight: "400",
+                                       }}>
+                                       &nbsp;&nbsp;
+                                       {`  ${moment(review.createdAt).fromNow(true)} ago`}
+                                    </span>
                                     <div className='review__card--title'>{review.title}</div>
                                     <div className='review__card--text'>{review.text}</div>
                                  </div>

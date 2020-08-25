@@ -5,7 +5,7 @@ import {
    PRODUCT_NOT_IN_CART,
 } from "../action/types";
 const initialState = {
-   cart: null,
+   cart: {},
    alreadyInCart: false,
    loading: true,
 };

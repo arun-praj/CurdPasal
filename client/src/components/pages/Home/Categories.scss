@@ -50,6 +50,16 @@
       }
    }
 }
+.heading_sub {
+   font-size: 16px;
+   margin-bottom: 16px;
+}
+.list__style {
+   display: block;
+}
+.card__style {
+   display: none;
+}
 // @media (min-width: 768px) {
 //    .topic-box {
 //       flex-basis: calc(100% / 5 - 10px);
@@ -63,6 +73,12 @@
    .topic-box {
       flex: 0 1 calc(100% / 3 - 1em);
    }
+   .list__style {
+      display: none;
+   }
+   .card__style {
+      display: block;
+   }
 }
 @media screen and (max-width: 480px) {
    .topic-box {
@@ -71,9 +87,9 @@
       margin: 10px 0 0 0;
    }
    .heading_main {
-      font-size: 15px;
+      // font-size: 15px;
    }
    .heading_sub {
-      font-size: 12px;
+      font-size: 16px;
    }
 }

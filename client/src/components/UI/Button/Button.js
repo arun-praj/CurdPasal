@@ -1,7 +1,8 @@
 import React from "react";
 const Button = (props) => {
-   let style = null;
-   console.log(props);
+   let style = new Object();
+   // console.log(props);
+
    if (props.type === "primary") {
       style = {
          width: "100%",
@@ -11,7 +12,7 @@ const Button = (props) => {
          border: "none",
          color: "white",
          fontSize: "16px",
-         letterSpacing: "1.2px",
+         letterSpacing: "1px",
          fontWeight: "700",
          // " &:hover": {
          //    backgroundColor: "#d44949 !important",
@@ -20,18 +21,13 @@ const Button = (props) => {
    } else if (props.type === "secondary") {
       style = {
          border: " 1px solid #686f7a !important",
-         // " &:hover ": {
-         //    color: "#000000 !important",
-         //    backgroundColor: "#ffffff !important",
-         // },
       };
    }
-
-   return (
-      <>
-         <Button style={style}>{props.value}</Button>;
-      </>
-   );
+   if (props.style) {
+      style = { ...style, ...props.style };
+   }
+   console.log(style);
+   return <button style={style}>{props.value}</button>;
 };
 
 export default Button;

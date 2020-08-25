@@ -2,7 +2,6 @@ import React, { Component, Fragment, Suspense, lazy } from "react";
 import { Switch, Route } from "react-router-dom";
 
 //REDUX
-import { Provider } from "react-redux";
 import { store } from "./redux/store";
 import { loadUser } from "./redux/action/auth";
 import { getCart } from "./redux/action/cart";
@@ -34,8 +33,6 @@ const CartDetails = lazy(() => import("./components/pages/CartDetails/CartDetail
 class App extends Component {
    state = {
       isSideDrawerOpen: false,
-      isLoginModalOpen: false,
-      isSignupModalOpen: false,
    };
    componentDidMount() {
       store.dispatch(loadUser());
@@ -72,8 +69,9 @@ class App extends Component {
 
                <SideDrawer
                   isOpen={this.state.isSideDrawerOpen}
-                  onLoginBtnClick={this.loginModalClickHandler}
-                  onSignupBtnClick={this.signupModalClickHandler}
+                  onClick={this.drawerToggleClickHandler}
+                  // onLoginBtnClick={this.loginModalClickHandler}
+                  // onSignupBtnClick={this.signupModalClickHandler}
                />
 
                <Switch>

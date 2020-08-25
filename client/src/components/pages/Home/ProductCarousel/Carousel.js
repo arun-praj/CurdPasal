@@ -36,9 +36,11 @@ const ProductCarousel = (props) => {
          </div>
       );
    } else {
-      val = props.products.map((el) => {
-         return <Card key={el._id} data={el} />;
-      });
+      val =
+         props.products &&
+         props.products.map((el) => {
+            return <Card key={el._id} data={el} />;
+         });
    }
    const responsive = {
       0: {

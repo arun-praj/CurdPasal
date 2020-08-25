@@ -191,11 +191,15 @@
 
 @media all and (max-width: 600px) {
    .bootCamp__detail {
+      .col-1 {
+         margin: 0;
+      }
       &--name {
          font-size: 27px;
       }
       &--description {
          font-size: 14px;
+         text-align: justify;
       }
       &--createdAt {
          font-size: 13px;

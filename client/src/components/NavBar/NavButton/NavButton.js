@@ -7,8 +7,8 @@ const NavButton = (props) => {
    let classes = ["navBar--button", "navBar--item"];
    classes.push(props.btnType);
    return (
-      <div className={classes.join(" ")} onClick={props.click}>
-         <Link className="navBar--link" to={props.to} style={{ fontSize: "15px" }} href="/">
+      <div className={classes.join(" ")} onClick={props.onClick}>
+         <Link className='navBar--link' to={props.to} style={{ fontSize: "15px" }} href='/'>
             {props.data}
          </Link>
       </div>
