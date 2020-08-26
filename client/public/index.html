@@ -5,7 +5,12 @@
       <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <meta name="theme-color" content="#000000" />
-
+      <meta
+         http-equiv="Content-Security-Policy"
+         content="default-src *;
+      img-src * 'self' data: https:; script-src 'self' 'unsafe-inline' 'unsafe-eval' *;
+      style-src  'self' 'unsafe-inline' *"
+      />
       <link
          rel="stylesheet"
          type="text/css"
@@ -38,15 +43,6 @@
       Learn how to configure a non-root public URL by running `npm run build`.
       
     -->
-      <!-- <meta
-         http-equiv="Content-Security-Policy"
-         content="default-src 'self' data:gap: http://www.visitsingapore.com 
-https://ssl.gstatic.com 'unsafe-eval';
-style-src 'self' 'unsafe-inline';
-media-src *;
-script-src 'sha256-V+/U3qbjHKP0SaNQhMwYNm62gfWX4QHwPJ7We1PXokI='
-"
-      /> -->
       <title>DhauPasal</title>
    </head>
    <body>
