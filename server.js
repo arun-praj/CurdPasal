@@ -30,7 +30,27 @@ connect();
 //    // add other server routes to path array
 //    app.use(proxy(["/api"], { target: "http://localhost:8000" }));
 // };
+//Routes
+app.use("/api/products", require("./routes/products"));
+app.use("/api/reviews", require("./routes/reviews"));
+app.use("/api/auth/", require("./routes/auth"));
+app.use("/api/cart", require("./routes/cart"));
 
+app.use("/api", (req, res, next) => {
+   log(req);
+   res.json({
+      "🖥 Server Status": "Running...🙋‍♀️🙋‍♀️🙋‍♀️🙋‍♀️",
+      Route: "ROUTE NOT FOUND",
+      AvailableRoutes: listEndpoints(app),
+   }).status(404);
+   next();
+});
+if (process.env.NODE_ENV === "production") {
+   app.use(express.static("client/build"));
+   app.get("*", (req, res) => {
+      res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+   });
+}
 //MIDDLEWARES
 app.use(express.json());
 app.use(express.static("./public"));
@@ -57,28 +77,6 @@ app.use(
       keys: [process.env.COOKIE_KEY],
    })
 );
-
-//Routes
-app.use("/api/products", require("./routes/products"));
-app.use("/api/reviews", require("./routes/reviews"));
-app.use("/api/auth/", require("./routes/auth"));
-app.use("/api/cart", require("./routes/cart"));
-
-app.use("/api", (req, res, next) => {
-   log(req);
-   res.json({
-      "🖥 Server Status": "Running...🙋‍♀️🙋‍♀️🙋‍♀️🙋‍♀️",
-      Route: "ROUTE NOT FOUND",
-      AvailableRoutes: listEndpoints(app),
-   }).status(404);
-   next();
-});
-if (process.env.NODE_ENV === "production") {
-   app.use(express.static("client/build"));
-   app.get("/", (req, res) => {
-      res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
-   });
-}
 
 app.use(errorHandler);
 
