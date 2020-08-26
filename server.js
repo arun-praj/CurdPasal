@@ -33,7 +33,7 @@ connect();
 
 //MIDDLEWARES
 app.use(express.json());
-app.use(express.static("public"));
+app.use(express.static("./public"));
 app.use(cors()); //enables cors
 app.use(mongoSanitize()); //prevent SQL injection attacks ie. sanitize data
 app.use(helmet()); //secure http headers
