@@ -30,6 +30,12 @@ connect();
 //    // add other server routes to path array
 //    app.use(proxy(["/api"], { target: "http://localhost:8000" }));
 // };
+
+//MIDDLEWARES
+app.use(express.json());
+app.use(express.static("./public"));
+app.use(cors()); //enables cors
+app.use(mongoSanitize()); //prevent SQL injection attacks ie. sanitize data
 //Routes
 app.use("/api/products", require("./routes/products"));
 app.use("/api/reviews", require("./routes/reviews"));
@@ -51,11 +57,7 @@ if (process.env.NODE_ENV === "production") {
       res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
    });
 }
-//MIDDLEWARES
-app.use(express.json());
-app.use(express.static("./public"));
-app.use(cors()); //enables cors
-app.use(mongoSanitize()); //prevent SQL injection attacks ie. sanitize data
+
 app.use(helmet()); //secure http headers
 app.use(xss()); //prevents cross site scriptiog(XSS) attacks
 app.use(hpp()); // prevents http parameter pollution
