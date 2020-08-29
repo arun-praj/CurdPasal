@@ -34,7 +34,7 @@ const CartDetails = (props) => {
                      ) : (
                         <div className='grid-1'>
                            <div className='cart__details__body__title'>{`${count}  Products in Cart`}</div>
-                           {cartProducts &&
+                           {cartProducts.products !== undefined &&
                               cartProducts.products.map((el) => {
                                  return (
                                     <div key={el._id} className='cart__details__body__box'>

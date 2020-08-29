@@ -4,8 +4,9 @@ const ErrorResponse = require("../utils/errorResponse");
 const asyncHandler = require("../middleware/async");
 
 //models
-const User = require("../models/User");
+// const User = require("../models/User");
 const Cart = require("../models/Cart");
+const Products = require("../models/Products");
 
 //@description      Add to cart
 //@Routes           POST /api/cart
@@ -13,7 +14,7 @@ const Cart = require("../models/Cart");
 exports.addToCart = asyncHandler(async (req, res, next) => {
    const { productId, quantity, name, description, price } = req.body.products;
    const userId = req.user._id;
-   console.log(req.body.products, req.user.id);
+   // console.log(req.body.products, req.user.id);
    try {
       let cart = await Cart.findOne({
          userId: userId,
@@ -21,17 +22,31 @@ exports.addToCart = asyncHandler(async (req, res, next) => {
       //if cart exist for current user
       if (cart) {
          //find index of product Id
+
          let itemIndex = cart.products.findIndex((p) => p.productId == productId);
          //if prodcut exists in cart
          if (itemIndex > -1) {
             let productItem = cart.products[itemIndex];
-            productItem.quantity = quantity;
+            console.log(cart.products[itemIndex].quantity);
+
+            productItem.quantity = parseFloat(productItem.quantity) + parseFloat(quantity);
             cart.products[itemIndex] = productItem;
          } else {
             //if product does not exist then
             cart.products.push({ productId, quantity, name, price, description });
          }
+         await Products.updateOne(
+            {
+               _id: productId,
+            },
+            {
+               $inc: {
+                  stock: -quantity,
+               },
+            }
+         );
          cart = await cart.save();
+
          return res.status(201).json({
             success: true,
             msg: "Cart Updated",
@@ -42,6 +57,16 @@ exports.addToCart = asyncHandler(async (req, res, next) => {
             userId,
             products: [{ productId, quantity, name, price, description }],
          });
+         await Products.updateOne(
+            {
+               _id: productId,
+            },
+            {
+               $inc: {
+                  stock: -quantity,
+               },
+            }
+         );
          return res.status(201).json({
             success: true,
             msg: "Added to Cart",
@@ -49,7 +74,7 @@ exports.addToCart = asyncHandler(async (req, res, next) => {
          });
       }
    } catch (e) {
-      return next(new ErrorResponse("Something went wrong", 400));
+      return next(new ErrorResponse(e.message, 400));
    }
 });
 

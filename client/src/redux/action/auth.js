@@ -20,9 +20,11 @@ export const loginWithGoogle = (response) => async (dispatch) => {
          "Content-Type": "application/json",
       },
    };
-   const { sW, yu, sU, PK, OU } = response.Ot;
+   console.log(response.profileObj);
 
-   const body = JSON.stringify({ sW, yu, sU, PK, OU });
+   const { email, googleId, imageUrl, familyName, givenName } = response.profileObj;
+
+   const body = JSON.stringify({ email, googleId, imageUrl, familyName, givenName });
    try {
       const res = await axios.post("/api/auth/google", body, config);
       dispatch({

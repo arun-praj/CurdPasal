@@ -67,7 +67,7 @@ class NavBar extends Component {
                </Dropgroup>
             ) : (
                <>
-                  {this.props.cartProducts &&
+                  {this.props.cartProducts.products !== undefined &&
                      this.props.cartProducts.products.map((el) => {
                         return (
                            <Dropgroup>

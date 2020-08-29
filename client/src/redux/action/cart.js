@@ -96,6 +96,7 @@ export const getCart = () => async (dispatch) => {
          payload: res.data,
       });
    } catch (e) {
+      console.log(e);
       dispatch({
          type: USER_CART_LOAD_FAIL,
       });

@@ -22,19 +22,19 @@ const sendTokenResponse = (user, statusCode, res) => {
 //@Routes           GET /api/auth/google
 //@access           public
 exports.loginWithGoogle = asyncHandler(async (req, res, next) => {
-   const { sW, yu, sU, PK, OU } = req.body;
+   const { email, googleId, imageUrl, familyName, givenName } = req.body;
    const user = await User.findOne({
-      email: yu,
+      email,
    });
    if (user) {
       sendTokenResponse(user, 200, res);
    } else {
       const newUser = await User.create({
-         googleId: OU,
-         firstName: sW,
-         lastName: sU,
-         email: yu,
-         photo: PK,
+         googleId,
+         firstName: givenName,
+         lastName: familyName,
+         email,
+         photo: imageUrl,
          verified: true,
       });
       sendTokenResponse(newUser, 200, res);

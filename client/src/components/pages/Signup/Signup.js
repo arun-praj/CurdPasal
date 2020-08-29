@@ -150,97 +150,97 @@ class Signup extends Component {
          transition: "0.4s ease all",
       };
       if (this.props.isAuthenticated) {
-         return <Redirect to="/" />;
+         return <Redirect to='/' />;
       }
       switch (this.state.activeStep) {
          case 0:
             formGroup = (
-               <form className="login__form" onSubmit={(e) => this.onSubmitHandler(e)}>
-                  <div className="login__form__group">
+               <form className='login__form' onSubmit={(e) => this.onSubmitHandler(e)}>
+                  <div className='login__form__group'>
                      <input
-                        type="text"
-                        name="firstName"
-                        id="firstName"
-                        minLength="2"
+                        type='text'
+                        name='firstName'
+                        id='firstName'
+                        minLength='2'
                         value={this.state.firstName}
-                        className="login__form__input"
-                        placeholder="First name"
+                        className='login__form__input'
+                        placeholder='First name'
                         onChange={this.formHandler}
                         required
                      />
 
-                     <label htmlFor="firstName" className="login__form__label">
+                     <label htmlFor='firstName' className='login__form__label'>
                         First name
                      </label>
-                     <svg width="24" height="24" className="login__form--icon">
-                        <use xlinkHref="/icons/tabler-sprite.svg#tabler-user" />
+                     <svg width='24' height='24' className='login__form--icon'>
+                        <use xlinkHref='/icons/tabler-sprite.svg#tabler-user' />
                      </svg>
                   </div>
-                  <div className="login__form__group">
+                  <div className='login__form__group'>
                      <input
-                        type="text"
-                        name="lastName"
-                        id="lastname"
-                        minLength="2"
+                        type='text'
+                        name='lastName'
+                        id='lastname'
+                        minLength='2'
                         value={this.state.lastName}
-                        className="login__form__input"
-                        placeholder="Last name"
+                        className='login__form__input'
+                        placeholder='Last name'
                         onChange={this.formHandler}
                         required
                      />
 
-                     <label htmlFor="lastName" className="login__form__label">
+                     <label htmlFor='lastName' className='login__form__label'>
                         Last name
                      </label>
-                     <svg width="24" height="24" className="login__form--icon">
-                        <use xlinkHref="/icons/tabler-sprite.svg#tabler-man" />
+                     <svg width='24' height='24' className='login__form--icon'>
+                        <use xlinkHref='/icons/tabler-sprite.svg#tabler-man' />
                      </svg>
                   </div>
-                  <div className="login__form__group">
+                  <div className='login__form__group'>
                      <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        minlength="8"
+                        type='email'
+                        id='email'
+                        name='email'
+                        minlength='8'
                         value={this.state.email}
-                        className="login__form__input"
-                        placeholder="Email"
+                        className='login__form__input'
+                        placeholder='Email'
                         onChange={this.formHandler}
                         required
                      />
 
-                     <label htmlFor="email" className="login__form__label">
+                     <label htmlFor='email' className='login__form__label'>
                         Email
                      </label>
-                     <svg className="login__form--icon" width="24" height="24">
-                        <use xlinkHref="/icons/tabler-sprite.svg#tabler-at" />
+                     <svg className='login__form--icon' width='24' height='24'>
+                        <use xlinkHref='/icons/tabler-sprite.svg#tabler-at' />
                      </svg>
                   </div>
                   <button
-                     type="submit"
-                     className="login__btn"
+                     type='submit'
+                     className='login__btn'
                      style={{ marginTop: "0px" }}
                      onClick={this.nextStepHandler}>
                      Continue
                   </button>
 
-                  <div className="breaker">
-                     <div className="line"></div>
-                     <div className="text">OR, Sign up with google</div>
-                     <div className="line"></div>
+                  <div className='breaker'>
+                     <div className='line'></div>
+                     <div className='text'>OR, Sign up with google</div>
+                     <div className='line'></div>
                   </div>
-                  <div className="login__form__group">
+                  <div className='login__form__group'>
                      <input
-                        type="button"
-                        className="login__form__input login__form__input--btn "
-                        value="Signup With Google"
+                        type='button'
+                        className='login__form__input login__form__input--btn '
+                        value='Signup With Google'
                      />
                      <img
-                        className="login__form--icon"
-                        height="24px"
-                        width="24px"
-                        src="/icons/icon-google.png"
-                        alt="google ko icon"
+                        className='login__form--icon'
+                        height='24px'
+                        width='24px'
+                        src='/icons/icon-google.png'
+                        alt='google ko icon'
                      />
                   </div>
                </form>
@@ -249,59 +249,59 @@ class Signup extends Component {
 
          case 1:
             formGroup = (
-               <form className="login__form" onSubmit={(e) => this.onSubmitHandler(e)}>
-                  <div className="login__form__group">
+               <form className='login__form' onSubmit={(e) => this.onSubmitHandler(e)}>
+                  <div className='login__form__group'>
                      <input
-                        type="number"
-                        name="contact"
-                        id="contact"
-                        minLength="7"
+                        type='number'
+                        name='contact'
+                        id='contact'
+                        minLength='7'
                         value={this.state.contact}
-                        className="login__form__input"
-                        placeholder="Phone number"
+                        className='login__form__input'
+                        placeholder='Phone number'
                         onChange={this.formHandler}
                         required
                      />
 
-                     <label htmlFor="contact" className="login__form__label">
+                     <label htmlFor='contact' className='login__form__label'>
                         Phone number
                      </label>
-                     <svg width="24" height="24" className="login__form--icon">
-                        <use xlinkHref="/icons/tabler-sprite.svg#tabler-device-mobile" />
+                     <svg width='24' height='24' className='login__form--icon'>
+                        <use xlinkHref='/icons/tabler-sprite.svg#tabler-device-mobile' />
                      </svg>
                   </div>
-                  <div className="login__form__group">
+                  <div className='login__form__group'>
                      <input
-                        type="name"
-                        name="city"
-                        id="city"
-                        minLength="2"
+                        type='name'
+                        name='city'
+                        id='city'
+                        minLength='2'
                         value={this.state.city}
-                        className="login__form__input"
-                        placeholder="City , Eg. Bhaktapur"
+                        className='login__form__input'
+                        placeholder='City , Eg. Bhaktapur'
                         onChange={this.formHandler}
                         required
                      />
 
-                     <label htmlFor="city" className="login__form__label">
+                     <label htmlFor='city' className='login__form__label'>
                         City
                      </label>
-                     <svg width="24" height="24" className="login__form--icon">
-                        <use xlinkHref="/icons/tabler-sprite.svg#tabler-map-2" />
+                     <svg width='24' height='24' className='login__form--icon'>
+                        <use xlinkHref='/icons/tabler-sprite.svg#tabler-map-2' />
                      </svg>
                   </div>
-                  <div className="login__form__group">
+                  <div className='login__form__group'>
                      <input
-                        type="checkbox"
-                        name="showMap"
-                        id="showMap"
+                        type='checkbox'
+                        name='showMap'
+                        id='showMap'
                         checked={this.state.showMap}
                         onChange={this.handlerCheckbox}
                      />
-                     <label for="showMap"> Use my geoloaction</label>
+                     <label for='showMap'> Use my geoloaction</label>
                   </div>
                   {this.state.showMap && (
-                     <div className="login__form__group">
+                     <div className='login__form__group'>
                         <div style={{ fontSize: "14px" }}>
                            <span>Please click on a point of your residence.</span>
                         </div>
@@ -312,7 +312,7 @@ class Signup extends Component {
                      </div>
                   )}
 
-                  <div className="signup__btn-group">
+                  <div className='signup__btn-group'>
                      <button
                         style={{
                            marginTop: "0px",
@@ -321,7 +321,7 @@ class Signup extends Component {
                            color: "black",
                            border: " 1px solid #686f7a ",
                         }}
-                        className="login__btn"
+                        className='login__btn'
                         onClick={this.prevStepHandler}>
                         Back
                      </button>
@@ -331,7 +331,7 @@ class Signup extends Component {
                            marginTop: "0px",
                            width: "150px",
                         }}
-                        className="login__btn"
+                        className='login__btn'
                         onClick={this.nextStepHandler}>
                         Continue
                      </button>
@@ -341,96 +341,96 @@ class Signup extends Component {
             break;
          case 2:
             formGroup = (
-               <form className="login__form" onSubmit={(e) => this.onSubmitHandler(e)}>
-                  <div className="login__form__group">
+               <form className='login__form' onSubmit={(e) => this.onSubmitHandler(e)}>
+                  <div className='login__form__group'>
                      <input
-                        type="password"
-                        id="password"
-                        name="password"
-                        minLength="8"
+                        type='password'
+                        id='password'
+                        name='password'
+                        minLength='8'
                         onChange={this.formHandler}
                         onKeyUp={this.passwordChangeHandler}
                         value={this.state.password}
-                        className="login__form__input"
-                        placeholder="Password"
+                        className='login__form__input'
+                        placeholder='Password'
                         required
                      />
 
-                     <label htmlFor="password" className="login__form__label">
+                     <label htmlFor='password' className='login__form__label'>
                         Password
                      </label>
-                     <svg className="login__form--icon" width="24" height="24">
-                        <use xlinkHref="/icons/tabler-sprite.svg#tabler-lock" />
+                     <svg className='login__form--icon' width='24' height='24'>
+                        <use xlinkHref='/icons/tabler-sprite.svg#tabler-lock' />
                      </svg>
                   </div>
-                  <div className="login__form__group">
+                  <div className='login__form__group'>
                      <input
-                        type="password"
-                        id="passwordRepeat"
-                        name="passwordRepeat"
-                        minLength="8"
+                        type='password'
+                        id='passwordRepeat'
+                        name='passwordRepeat'
+                        minLength='8'
                         onChange={this.formHandler}
                         value={this.state.passwordRepeat}
-                        className="login__form__input"
-                        placeholder="Enter your password again."
+                        className='login__form__input'
+                        placeholder='Enter your password again.'
                         required
                      />
 
-                     <label htmlFor="password" className="login__form__label">
+                     <label htmlFor='password' className='login__form__label'>
                         Re-Password
                      </label>
-                     <svg className="login__form--icon" width="24" height="24">
-                        <use xlinkHref="/icons/tabler-sprite.svg#tabler-repeat" />
+                     <svg className='login__form--icon' width='24' height='24'>
+                        <use xlinkHref='/icons/tabler-sprite.svg#tabler-repeat' />
                      </svg>
                   </div>
                   <span>A password must contain : </span>
-                  <div className="password__validation">
+                  <div className='password__validation'>
                      <div>
                         <div
-                           className="password__validation__text"
+                           className='password__validation__text'
                            style={this.state.passwordValidate.eightCharacters ? style : null}>
                            <svg
                               style={this.state.passwordValidate.eightCharacters ? svgStyle : null}
-                              className="password__validation__icon">
-                              <use xlinkHref="/icons/tabler-sprite.svg#tabler-point" />
+                              className='password__validation__icon'>
+                              <use xlinkHref='/icons/tabler-sprite.svg#tabler-point' />
                            </svg>
                            Minimum 8 characters
                         </div>
                         <div
-                           className="password__validation__text"
+                           className='password__validation__text'
                            style={this.state.passwordValidate.number ? style : null}>
                            <svg
                               style={this.state.passwordValidate.number ? svgStyle : null}
-                              className="password__validation__icon">
-                              <use xlinkHref="/icons/tabler-sprite.svg#tabler-point" />
+                              className='password__validation__icon'>
+                              <use xlinkHref='/icons/tabler-sprite.svg#tabler-point' />
                            </svg>
                            One number
                         </div>
                      </div>
                      <div>
                         <div
-                           className="password__validation__text"
+                           className='password__validation__text'
                            style={this.state.passwordValidate.capital ? style : null}>
                            <svg
                               style={this.state.passwordValidate.capital ? svgStyle : null}
-                              className="password__validation__icon">
-                              <use xlinkHref="/icons/tabler-sprite.svg#tabler-point" />
+                              className='password__validation__icon'>
+                              <use xlinkHref='/icons/tabler-sprite.svg#tabler-point' />
                            </svg>
                            One capital character
                         </div>
                         <div
-                           className="password__validation__text"
+                           className='password__validation__text'
                            style={this.state.passwordValidate.small ? style : null}>
                            <svg
                               style={this.state.passwordValidate.small ? svgStyle : null}
-                              className="password__validation__icon">
-                              <use xlinkHref="/icons/tabler-sprite.svg#tabler-point" />
+                              className='password__validation__icon'>
+                              <use xlinkHref='/icons/tabler-sprite.svg#tabler-point' />
                            </svg>
                            One small character
                         </div>
                      </div>
                   </div>
-                  <div className="signup__btn-group">
+                  <div className='signup__btn-group'>
                      <button
                         style={{
                            width: "150px",
@@ -438,7 +438,7 @@ class Signup extends Component {
                            color: "black",
                            border: " 1px solid #686f7a ",
                         }}
-                        className="login__btn"
+                        className='login__btn'
                         onClick={this.prevStepHandler}>
                         Back
                      </button>
@@ -447,7 +447,7 @@ class Signup extends Component {
                         style={{
                            width: "150px",
                         }}
-                        className="login__btn"
+                        className='login__btn'
                         onClick={this.onSubmitHandler}>
                         Submit
                      </button>
@@ -461,8 +461,8 @@ class Signup extends Component {
       }
       return (
          <Wrapper>
-            <div className="signup">
-               <div className="signup__steeper">
+            <div className='signup'>
+               <div className='signup__steeper'>
                   <Stepper
                      steps={[
                         { title: "User details" },
@@ -470,10 +470,10 @@ class Signup extends Component {
                         { title: "Auth" },
                      ]}
                      activeStep={this.state.activeStep}
-                     circleFontSize="20px"
+                     circleFontSize='20px'
                   />
                </div>
-               <div className="login__container">{formGroup}</div>
+               <div className='login__container'>{formGroup}</div>
             </div>
          </Wrapper>
       );
