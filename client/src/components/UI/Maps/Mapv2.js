@@ -24,7 +24,7 @@ class Mapv2 extends Component {
                zoom={zoom}
                center={center}
                // eslint-disable-next-line
-               style="mapbox://styles/mapbox/streets-v9"
+               style='mapbox://styles/mapbox/streets-v9'
                layout={{ "icon-image": "myImage", "icon-allow-overlap": true }}
                images={images}
                containerStyle={{
@@ -32,8 +32,8 @@ class Mapv2 extends Component {
                   width: "100vw",
                }}>
                <Layer
-                  type="symbol"
-                  id="marker"
+                  type='symbol'
+                  id='marker'
                   layout={{ "icon-image": "myImage", "icon-allow-overlap": true }}
                   images={images}>
                   {StoreDate.features.map((el) => (
