@@ -21,7 +21,7 @@ const errorHandler = (err, req, res, next) => {
 
    //Mongoose Duplicate Key
    if (err.code === 11000) {
-      const message = "Email already Exist. Please Login";
+      const message = ["Already in Database"];
       error = new ErrorResponse(message, 400);
    }
 
