@@ -101,3 +101,16 @@ exports.getMe = asyncHandler(async (req, res, next) => {
       });
    }
 });
+
+exports.getCustomers = asyncHandler(async (req, res, next) => {
+   const customers = await User.find();
+   console.log(customers);
+   if (!customers) {
+      return next(new ErrorResponse(`Empty Customers`, 204));
+   }
+   res.json({
+      success: true,
+      count: customers.length,
+      data: customers,
+   }).status(200);
+});
