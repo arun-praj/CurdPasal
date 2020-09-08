@@ -10,6 +10,6 @@ router.post("/google", loginWithGoogle);
 router.post("/register", register);
 router.post("/login", login);
 
-router.get("/customers", getCustomers);
+router.get("/customers", protect, getCustomers);
 
 module.exports = router;
