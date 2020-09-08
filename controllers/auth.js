@@ -103,7 +103,9 @@ exports.getMe = asyncHandler(async (req, res, next) => {
 });
 
 exports.getCustomers = asyncHandler(async (req, res, next) => {
-   const customers = await User.find();
+   const customers = await User.find({
+      role: "user",
+   });
    console.log(customers);
    if (!customers) {
       return next(new ErrorResponse(`Empty Customers`, 204));
