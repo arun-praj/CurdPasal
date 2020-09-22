@@ -6,6 +6,8 @@ import {
    LOGIN_SUCCESS,
    LOGIN_FAILED,
    LOGOUT,
+   USER_UPDATE_FAIL,
+   USER_UPDATE_SUCCESS,
 } from "../action/types";
 const initialState = {
    token: localStorage.getItem("token"),
@@ -47,6 +49,17 @@ const authReducer = (state = initialState, action) => {
             isAuthenticated: true,
             loading: false,
             user: payload,
+         };
+      case USER_UPDATE_SUCCESS:
+         return {
+            ...state,
+            isAuthenticated: true,
+            loading: false,
+            user: payload,
+         };
+      case USER_UPDATE_FAIL:
+         return {
+            ...state,
          };
       default:
          return state;

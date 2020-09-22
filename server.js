@@ -7,6 +7,7 @@ const volleyball = require("volleyball");
 const cors = require("cors");
 const path = require("path");
 const fileupload = require("express-fileupload");
+const cloudinary = require("cloudinary").v2;
 // const proxy = require("http-proxy-middleware");
 
 //security
@@ -30,19 +31,33 @@ dotenv.config({
 connect();
 
 //file upload
-app.use(fileupload());
+app.use(
+   fileupload({
+      uriDecodeFileName: true,
+   })
+);
 
 //MIDDLEWARES
 app.use(express.json());
+// app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
 app.use(cors()); //enables cors
 // app.use(mongoSanitize()); //prevent SQL injection attacks ie. sanitize data
 // app.use(xss()); //prevents cross site scriptiog(XSS) attacks
 // app.use(hpp()); // prevents http parameter pollution
 //rate limiting
+
+// if (typeof process.env.CLOUDINARY_URL === "undefined") {
+//    console.warn("!! cloudinary config is undefined !!");
+//    console.warn("export CLOUDINARY_URL or set dotenv file");
+// } else {
+//    console.log("cloudinary config:");
+//    console.log(cloudinary.config());
+// }
+
 const limiter = rateLimit({
    windowMs: 10 * 60 * 1000, //10 mins
-   max: 10000,
+   max: 10 * 60 * 60,
 });
 app.use(limiter);
 if (process.env.NODE_ENV !== "production") {

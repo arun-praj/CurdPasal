@@ -12,23 +12,9 @@ import MoonLoader from "react-spinners/MoonLoader";
 import NavBar from "./components/NavBar/NavBar";
 import Backdrop from "./components/UI/Backdrop/Backdrop";
 import SideDrawer from "./components/SideDrawer/SideDrawer";
-// import Login from "./components/pages/Login/Login";
-// import Signup from "./components/pages/Signup/Signup";
-// import Error from "./components/pages/Error/Error";
-// import Footer from "./components/Footer/FooterAccordion";
-// import Footer from "./components/Footer/Footer";
-// import CartDetails from "./components/pages/CartDetails/CartDetails";
 
-import "./utilities.scss";
-// import ProductDetails from "./components/pages/ProductDetails/ProductDetails";
-
-const Home = lazy(() => import("./components/pages/Home/Home"));
-const Login = lazy(() => import("./components/pages/Login/Login"));
-const Signup = lazy(() => import("./components/pages/Signup/Signup"));
-const Error = lazy(() => import("./components/pages/Error/Error"));
+import Routes from "./Routes";
 const Footer = lazy(() => import("./components/Footer/FooterAccordion"));
-const ProductDetails = lazy(() => import("./components/pages/ProductDetails/ProductDetails"));
-const CartDetails = lazy(() => import("./components/pages/CartDetails/CartDetails"));
 
 class App extends Component {
    state = {
@@ -70,18 +56,9 @@ class App extends Component {
                <SideDrawer
                   isOpen={this.state.isSideDrawerOpen}
                   onClick={this.drawerToggleClickHandler}
-                  // onLoginBtnClick={this.loginModalClickHandler}
-                  // onSignupBtnClick={this.signupModalClickHandler}
                />
 
-               <Switch>
-                  <Route exact path='/' component={Home} />
-                  <Route exact path='/login' component={Login} />
-                  <Route exact path='/signup' component={Signup} />
-                  <Route exact path='/products/:id' component={ProductDetails} />
-                  <Route exact path='/cart' component={CartDetails} />
-                  <Route component={Error} />
-               </Switch>
+               <Routes />
 
                <Footer />
             </Fragment>

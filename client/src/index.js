@@ -11,11 +11,12 @@ import { ToastContainer } from "react-toastify";
 
 //css
 import "react-toastify/dist/ReactToastify.css";
-import "./index.scss";
-import "./utilities.scss";
+
 import App from "./App";
 // import Playground from "./Playground";
 
+//scss
+import "./scss/main.scss";
 ReactDOM.render(
    <Provider store={store}>
       <BrowserRouter>

@@ -1,0 +1,196 @@
+// body {
+//    font-family: "Lato", sans-serif;
+//    font-size: 1.5em;
+//    color: #293b49;
+// }
+
+// a {
+//    text-decoration: none;
+// }
+
+.Error401 {
+   height: 70vh;
+   font-size: 100%;
+}
+
+.center {
+   height: 100%;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   flex-direction: column;
+}
+
+.error {
+   display: flex;
+   flex-direction: row;
+   justify-content: space-between;
+   align-content: center;
+}
+
+.number {
+   font-weight: 900;
+   font-size: 15em;
+   line-height: 1;
+}
+
+.illustration {
+   position: relative;
+   width: 12.2em;
+   margin: 0 2.1em;
+}
+
+.circle {
+   position: absolute;
+   bottom: 0;
+   left: 0;
+   width: 12.2em;
+   height: 11.4em;
+   border-radius: 50%;
+   background-color: #293b49;
+}
+
+.clip {
+   position: absolute;
+   bottom: 0.3em;
+   left: 50%;
+   transform: translateX(-50%);
+   overflow: hidden;
+   width: 12.5em;
+   height: 13em;
+   border-radius: 0 0 50% 50%;
+}
+
+.paper {
+   position: absolute;
+   bottom: -0.3em;
+   left: 50%;
+   transform: translateX(-50%);
+   width: 9.2em;
+   height: 12.4em;
+   border: 0.3em solid #293b49;
+   background-color: white;
+   border-radius: 0.8em;
+}
+
+.paper::before {
+   content: "";
+   position: absolute;
+   top: -0.7em;
+   right: -0.7em;
+   width: 1.4em;
+   height: 1em;
+   background-color: white;
+   border-bottom: 0.3em solid #293b49;
+   transform: rotate(45deg);
+}
+
+.face {
+   position: relative;
+   margin-top: 2.3em;
+}
+
+.eyes {
+   position: absolute;
+   top: 0;
+   left: 2.4em;
+   width: 4.6em;
+   height: 0.8em;
+}
+
+.eye {
+   position: absolute;
+   bottom: 0;
+   width: 0.8em;
+   height: 0.8em;
+   border-radius: 50%;
+   background-color: #293b49;
+   animation-name: eye;
+   animation-duration: 4s;
+   animation-iteration-count: infinite;
+   animation-timing-function: ease-in-out;
+}
+
+.eye-left {
+   left: 0;
+}
+
+.eye-right {
+   right: 0;
+}
+
+@keyframes eye {
+   0% {
+      height: 0.8em;
+   }
+   50% {
+      height: 0.8em;
+   }
+   52% {
+      height: 0.1em;
+   }
+   54% {
+      height: 0.8em;
+   }
+   100% {
+      height: 0.8em;
+   }
+}
+
+.rosyCheeks {
+   position: absolute;
+   top: 1.6em;
+   width: 1em;
+   height: 0.2em;
+   border-radius: 50%;
+   background-color: #fdabaf;
+}
+
+.rosyCheeks-left {
+   left: 1.4em;
+}
+
+.rosyCheeks-right {
+   right: 1.4em;
+}
+
+.mouth {
+   position: absolute;
+   top: 3.1em;
+   left: 50%;
+   width: 1.6em;
+   height: 0.2em;
+   border-radius: 0.1em;
+   transform: translateX(-50%);
+   background-color: #293b49;
+}
+
+.text {
+   margin-top: 50px;
+   font-weight: 300;
+   color: #293b49;
+}
+
+.by {
+   position: absolute;
+   bottom: 0.5em;
+   left: 0.5em;
+   text-transform: uppercase;
+   color: #293b49;
+}
+
+.byLink {
+   color: #04cba0;
+}
+
+@media screen and (max-width: 650px) {
+   .Error401 {
+      font-size: 81.7%;
+   }
+}
+
+@media screen and (max-width: 550px) {
+   .Error401 {
+      font-size: 61.7%;
+   }
+}

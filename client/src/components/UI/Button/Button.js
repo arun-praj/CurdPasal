@@ -1,13 +1,12 @@
 import React from "react";
 const Button = (props) => {
    let style = new Object();
-   // console.log(props);
 
    if (props.type === "primary") {
       style = {
          width: "100%",
          backgroundColor: "#ec5252",
-         padding: "12px 20px",
+         padding: "10px 20px",
          borderRadius: "3px",
          border: "none",
          color: "white",
@@ -26,8 +25,11 @@ const Button = (props) => {
    if (props.style) {
       style = { ...style, ...props.style };
    }
-   console.log(style);
-   return <button style={style}>{props.value}</button>;
+   return (
+      <button style={style} onClick={props.onClick}>
+         {props.value}
+      </button>
+   );
 };
 
 export default Button;

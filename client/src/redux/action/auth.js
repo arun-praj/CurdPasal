@@ -6,13 +6,43 @@ import {
    LOGIN_FAILED,
    LOGIN_SUCCESS,
    LOGOUT,
+   USER_UPDATE_FAIL,
+   USER_UPDATE_SUCCESS,
 } from "./types";
 import axios from "axios";
+import { trackPromise } from "react-promise-tracker";
 
 import { setAlert } from "./alert";
 import setAuthToken from "../utils/setAuthToken";
 import { store } from "../store";
 import { getCart } from "./cart";
+
+export const updateCustomerProfile = (body) => async (dispatch) => {
+   const config = {
+      headers: {
+         "Content-Type": "application/json",
+      },
+   };
+   console.log(body);
+   trackPromise(
+      axios
+         .patch("/api/auth/customer", body, config)
+         .then((res) => {
+            dispatch(setAlert(" ✔︎ User updated", "success"));
+            dispatch({
+               type: USER_UPDATE_SUCCESS,
+               payload: res.data,
+            });
+         })
+         .catch((e) => {
+            setAlert(e, "error");
+            dispatch({
+               type: USER_UPDATE_FAIL,
+               payload: e,
+            });
+         })
+   );
+};
 
 export const loginWithGoogle = (response) => async (dispatch) => {
    const config = {

@@ -2,6 +2,8 @@
 const asyncHandler = require("../middleware/async");
 const ErrorResponse = require("../utils/errorResponse");
 const path = require("path");
+const cloudinary = require("../utils/cloudnary");
+// const cloudinary = require("cloudinary").v2;
 //MODELS
 const Products = require("../models/Products");
 
@@ -13,7 +15,7 @@ exports.getProducts = asyncHandler(async (req, res, next) => {
    if (!products) {
       return next(new ErrorResponse(`No any product`, 400));
    }
-   res.json({ success: true, data: products }).status(201);
+   res.json({ success: true, data: products, count: products.length }).status(201);
 });
 
 //@description      Get single Product
@@ -27,15 +29,39 @@ exports.getProduct = asyncHandler(async (req, res, next) => {
    res.json({ success: true, data: product }).status(201);
 });
 
+//@description      get Products images
+//@Routes           POST /api/products/images
+//@access           Private
+exports.getProductsImages = asyncHandler(async (req, res, next) => {
+   const response = await cloudinary.search
+      .expression("folder:Dhaushop_products")
+      .max_results(30)
+      .execute()
+      .then((result) => console.log(result));
+   res.json({ msg: "success" });
+});
+
 //@description      Add a Product
 //@Routes           POST /api/products
 //@access           Private
 exports.addProduct = asyncHandler(async (req, res, next) => {
-   const newproduct = await Products.create(req.body);
-   if (!newproduct) {
+   const product = await Products.findOneAndUpdate(
+      {
+         name: req.body.name,
+      },
+      req.body,
+      {
+         new: true,
+         upsert: true, // if not found then create new product using filter and update value
+         rawResult: true,
+         runValidators: true,
+      }
+   );
+
+   if (!product) {
       return next(new ErrorResponse(`Connot Create product`, 400));
    }
-   res.json({ msg: "Created new product", data: newproduct }).status(201);
+   res.json({ msg: "Updated product", data: product }).status(201);
 });
 
 //@description      Upload Product pricture
@@ -70,6 +96,30 @@ exports.productPhotoUpload = asyncHandler(async (req, res, next) => {
       }
       await Products.findByIdAndUpdate(req.params.id, { photo: file.name });
    });
-   console.log(file.name);
+   //upload image to cloudnary
+   try {
+      const eager_options = {
+         width: 200,
+         height: 200,
+         crop: "scale",
+         format: "jpg",
+      };
+      const fileName = file.name.split(".")[0];
+      console.log(fileName);
+
+      const uploadResponse = await cloudinary.uploader.upload(
+         `${process.env.PRODUCT_UPLOAD_PATH}/${file.name}`,
+         {
+            public_id: `dhaushop_products/${fileName}`,
+            // use_filename: true,
+            // folder: "Dhaushop_products",
+            eager: eager_options,
+         }
+      );
+   } catch (e) {
+      console.log("Upload to clounary failed", e);
+      return res.json({ msg: "Upload to clounary failed", error: e }).status(201);
+   }
+
    res.json({ msg: "Upload Successful", data: file.name }).status(201);
 });

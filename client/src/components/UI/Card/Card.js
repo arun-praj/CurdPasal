@@ -6,18 +6,15 @@ import "./Card.scss";
 // import "./Product.scss";
 
 const Card = (props) => {
-   // console.log(props.data);
-   const { _id, name, description, averageRating, price } = props.data;
-   // console.log(careers);
+   const { _id, name, description, averageRating, price, photo } = props.data;
 
-   // console.log(props.badge);
    return (
       // <Link to={{ pathname: `/bootcamps/${id}`, props: props.badge }} className="card">
       <Link to={`/products/${_id}`} className='card'>
          <div className='card--img__container'>
             <img
-               src='https://image.tmdb.org/t/p/w500/kqjL17yufvn9OVLyXYpvtyrFfak.jpg'
-               alt='Bootcamp'
+               src={`https://res.cloudinary.com/dc6u4purx/image/upload/v1599720800/Dhaushop_products/${photo}`}
+               alt='card'
                className='card--img'
             />
          </div>

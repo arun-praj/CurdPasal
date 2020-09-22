@@ -114,7 +114,7 @@ class NavBar extends Component {
                <span>Loading</span>
             ) : this.props.isAuthenticated ? (
                <Dropdown
-                  to=' '
+                  to='/'
                   button={
                      <ProfilePic
                         firstName={this.props.user.data.firstName}

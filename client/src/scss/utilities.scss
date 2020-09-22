@@ -121,6 +121,11 @@ input::-webkit-inner-spin-button {
    margin: 0;
 }
 
+.heading--danger {
+   font-weight: 600;
+   color: #cb2431;
+}
+
 /* Firefox */
 input[type="number"] {
    -moz-appearance: textfield;

@@ -103,9 +103,7 @@ exports.getMe = asyncHandler(async (req, res, next) => {
 });
 
 exports.getCustomers = asyncHandler(async (req, res, next) => {
-   const customers = await User.find({
-      role: "user",
-   });
+   const customers = await User.find();
    console.log(customers);
    if (!customers) {
       return next(new ErrorResponse(`Empty Customers`, 204));
@@ -115,4 +113,22 @@ exports.getCustomers = asyncHandler(async (req, res, next) => {
       count: customers.length,
       data: customers,
    }).status(200);
+});
+
+exports.updateCustomer = asyncHandler(async (req, res, next) => {
+   if (req.body.email) {
+      delete req.body.email;
+   }
+   const updatedCustomer = await User.findByIdAndUpdate(req.user.id, req.body, {
+      new: true,
+      runValidators: true,
+   });
+   if (!updatedCustomer) {
+      return next(new ErrorResponse(`Cannot update Product`, 401));
+   } else {
+      res.json({
+         success: true,
+         data: updatedCustomer,
+      }).status(200);
+   }
 });
